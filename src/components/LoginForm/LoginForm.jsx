@@ -6,15 +6,34 @@ import { Link } from "react-router-dom";
 export default function LoginForm() {
       // temporary fix, need to figure out the visibility component later 
       // the ternary operator toggles between 2 different icons base on the truthy/falsy values(LOL what are these words)   
-      let visibility = false
+      //   referenced NextFit
+      const [visibility, setVisibility] = useState(false);
 
+      // initialise the form data format - create an object ah
+      // useState - credentials, setCredentials = useState(initialFormData)
+      // event.target.value  
+      const [credentials, setCredentials] = useState({
+        username: "",
+        password: "",
+      });
+      //  testing: create function to handle toggling of visibility icon 
+       const handlePasswordVisibility = function() {
+        setVisibility((prev) => !prev);
+       }
+      // spread operator (?), spread the credential data format
+      // "push in" and object key-value pair   
+       const handleChange = function(e) {
+        setCredentials({
+            ...credentials, [e.target.name]: e.target.value,
+        });
+       };
     return(
     <div className="container bg-neutral-400 mx-auto max-w-md p-4">
         <form className="p-2" 
         // onSubmit={handleSubmit}
         >
             <header className="text-white font-inter font-light text-2xl mb-4">
-            Log In
+            Log In 
             </header>
             <div className="mb-6">
             <label
@@ -29,7 +48,7 @@ export default function LoginForm() {
                 name="username"
                 autoComplete="off"
                 // value={credentials.username}
-                // onChange={handleChange}
+                onChange={handleChange}
                 className="bg-neutral-300 text-gray-900 text-sm focus:outline-none block w-full p-2.5 cursor-text font-inter font-extralight border-none"
                 required
             />
@@ -48,14 +67,14 @@ export default function LoginForm() {
                 name="password"
                 autoComplete="off"
                 // value={credentials.password}
-                // onChange={handleChange}
+                onChange={handleChange}
                 className="bg-neutral-300 text-gray-900 text-sm focus:ring-zinc-500 block w-full p-2.5 cursor-text font-inter font-extralight border-none"
                 required
                 />
                 <button
                 className="btn btn-sm btn-ghost text-neutral-500 font-inter font-extralight absolute inset-y-1 right-0 pr-3 flex items-center"
                 type="button"
-                // onClick={handlePasswordVisibility}
+                onClick={handlePasswordVisibility}
                 >
                 {visibility ? (
                     <AiOutlineEyeInvisible className="text-2xl" />

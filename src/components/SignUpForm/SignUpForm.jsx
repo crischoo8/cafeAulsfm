@@ -5,7 +5,23 @@ import { Link } from "react-router-dom";
 
 export default function SignUpForm() {
     // temporary fix, need to figure out the visibility component later 
-    let visibility = true
+    const [visibility, setVisibility] = useState(false);
+    const [userData, setUserData] = useState({
+        email: "",
+        username: "",
+        password: "",
+        repeat: "",
+    });
+    //  testing: create function to handle toggling of visibility icon 
+     const handlePasswordVisibility = function() {
+      setVisibility((prev) => !prev);
+     }
+
+     const handleChange = function(e) {
+        setUserData({
+            ...userData, [e.target.name]: e.target.value,
+        });
+     };
 
     return (
         <div className="container bg-neutral-400 mx-auto max-w-md p-4">
@@ -28,7 +44,7 @@ export default function SignUpForm() {
               id="email"
               name="email"
             //   value={userData.email}
-            //   onChange={handleChange}
+              onChange={handleChange}
               className="bg-neutral-300 text-gray-900 text-sm focus:ring-zinc-500 block w-full p-2.5 cursor-text font-inter font-extralight border-none"
               placeholder="name@email.com"
               autoComplete="off"
@@ -47,7 +63,7 @@ export default function SignUpForm() {
               id="username"
               name="username"
             //   value={userData.username}
-            //   onChange={handleChange}
+              onChange={handleChange}
               placeholder="Username"
               autoComplete="off"
               className="bg-neutral-300 text-gray-900 text-sm focus:outline-none block w-full p-2.5 cursor-text font-inter font-extralight border-none"
@@ -67,7 +83,7 @@ export default function SignUpForm() {
                 id="password"
                 name="password"
                 // value={userData.password}
-                // onChange={handleChange}
+                onChange={handleChange}
                 autoComplete="off"
                 placeholder="Password"
                 className="bg-neutral-300 text-gray-900 text-sm focus:ring-zinc-500 block w-full p-2.5 cursor-text font-inter font-extralight border-none"
@@ -75,7 +91,7 @@ export default function SignUpForm() {
               />
               <button
                 className="btn btn-sm btn-ghost text-neutral-500 font-inter font-extralight absolute inset-y-1 right-0 pr-3 flex items-center"
-                // onClick={handlePasswordVisibility}
+                onClick={handlePasswordVisibility}
                 type="button"
               >
                 {visibility ? (
@@ -99,7 +115,7 @@ export default function SignUpForm() {
                 id="repeat-password"
                 name="repeat"
                 // value={userData.repeat}
-                // onChange={handleChange}
+                onChange={handleChange}
                 autoComplete="off"
                 placeholder="Repeat Password"
                 className="bg-neutral-300 text-gray-900 text-sm focus:ring-zinc-500 block focus:outline-none w-full p-2.5 cursor-text font-inter font-extralight border-none"
@@ -107,7 +123,7 @@ export default function SignUpForm() {
               />
               <button
                 className="btn btn-sm btn-ghost text-neutral-500 font-inter font-extralight absolute inset-y-1 right-0 pr-3 flex items-center"
-                // onClick={handlePasswordVisibility}
+                onClick={handlePasswordVisibility}
                 type="button"
               >
                 {visibility ? (
