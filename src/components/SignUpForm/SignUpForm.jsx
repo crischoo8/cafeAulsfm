@@ -4,7 +4,6 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 export default function SignUpForm() {
-    // temporary fix, need to figure out the visibility component later 
     const [visibility, setVisibility] = useState(false);
     const [userData, setUserData] = useState({
         email: "",
@@ -12,7 +11,7 @@ export default function SignUpForm() {
         password: "",
         repeat: "",
     });
-    //  testing: create function to handle toggling of visibility icon 
+   
      const handlePasswordVisibility = function() {
       setVisibility((prev) => !prev);
      }

@@ -4,9 +4,6 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 export default function LoginForm() {
-      // temporary fix, need to figure out the visibility component later 
-      // the ternary operator toggles between 2 different icons base on the truthy/falsy values(LOL what are these words)   
-      //   referenced NextFit
       const [visibility, setVisibility] = useState(false);
 
       // initialise the form data format - create an object ah
@@ -16,10 +13,11 @@ export default function LoginForm() {
         username: "",
         password: "",
       });
-      //  testing: create function to handle toggling of visibility icon 
+        
        const handlePasswordVisibility = function() {
         setVisibility((prev) => !prev);
        }
+
       // spread operator (?), spread the credential data format
       // "push in" and object key-value pair   
        const handleChange = function(e) {
