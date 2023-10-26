@@ -7,7 +7,7 @@ const logger = require("morgan");
 
 
 //* Routers
-// const usersRouter = require("./routes/usersRouter");
+const usersRouter = require("./routes/usersRouter");
 // const wardrobeRouter = require("./routes/wardrobeRouter");
 // const outfitRouter = require("./routes/outfitsRouter");
 
@@ -22,14 +22,14 @@ app.use(express.static(path.join(__dirname, "dist")));
 // app.use(checkToken);
 
 //* Routes -> all routes to start with /api
-// app.use("/api/users", usersRouter);
+app.use("/api/users", usersRouter);
 // app.use("/api/wardrobe", ensureLoggedIn, wardrobeRouter);
 // app.use("/api/outfits", ensureLoggedIn, outfitRouter);
 
 //? This should be the last route -> this is for react router
-// app.get("/*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "dist", "index.html"));
-// });
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 
 //* Listener
 const port = process.env.PORT || 3000;

@@ -20,10 +20,10 @@ export default function LandingPage() {
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-2xl mx-auto text-center mt-44">
             <h1 className="mb-5 text-5xl font-bold text-white">
-              A peaceful oasis for you, yourself and nobody else.
+              A journaling oasis for you, yourself and nobody else.
             </h1>
             <p className="mb-5 text-white text-xl">
-              Catch a break and get updated at CafeAuLsfm.
+              Catch a break at CafeAuLsfm.
             </p>
             <Link to="/signup">
               <button className="btn btn-ghost text-white text-2xl bg-slate-600 hover:bg-slate-800 rounded-md normal-case">

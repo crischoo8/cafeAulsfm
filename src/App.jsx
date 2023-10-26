@@ -1,3 +1,4 @@
+import debug from "debug";
 import SignUpForm from "./components/SignUpForm/SignUpForm";
 import LoginForm from "./components/LoginForm/LoginForm";
 import LandingPage from "./pages/LandingPage/LandingPage";
@@ -13,9 +14,15 @@ import { getUser } from "./utilities/users-service";
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 
+
+const log = debug("cafeaulsfm:src:App");
+localStorage.debug = "cafeaulsfm:*";
+
+log("Start React");
+
 function App() {
-  // const [user, setUser] = useState(getUser());
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(getUser());
+  // const [user, setUser] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import { signUpService } from "../../utilities/users-service";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
 export default function SignUpForm() {
+    const [setUser, status, setStatus] = useOutletContext();
     const [visibility, setVisibility] = useState(false);
     const [userData, setUserData] = useState({
         email: "",
@@ -22,14 +24,33 @@ export default function SignUpForm() {
         });
      };
 
+     const handleSubmit = async function(e) {
+        e.preventDefault();
+        setStatus("loading");
+
+        try{
+            const user = await signUpService(userData);
+            if (user !== null && user !== undefined) {
+                setUser(user);
+                navigate("/home");
+            }
+        } catch(err) {
+            setStatus("error");
+            console.log(err);
+        } finally {
+            setStatus(null);
+        }
+        
+     };
+
     return (
         <div className="container bg-neutral-400 mx-auto max-w-md p-4">
         <form className="p-2" 
-        // onSubmit={handleSubmit} 
+        onSubmit={handleSubmit} 
         autoComplete="off">
           <header className="text-white font-inter font-light text-2xl mb-4">
-            Join us at{" "}
-            <span className="text-[#E50914] text-3xl font-bold">CafeAuLsfm!</span>
+            Join us at{" "} {JSON.stringify(userData)}
+            <span className=" text-slate-600 text-3xl font-bold">CafeAuLsfm!</span>
           </header>
           <div className="mb-6">
             <label
@@ -42,7 +63,7 @@ export default function SignUpForm() {
               type="email"
               id="email"
               name="email"
-            //   value={userData.email}
+              value={userData.email}
               onChange={handleChange}
               className="bg-neutral-300 text-gray-900 text-sm focus:ring-zinc-500 block w-full p-2.5 cursor-text font-inter font-extralight border-none"
               placeholder="name@email.com"
@@ -61,7 +82,7 @@ export default function SignUpForm() {
               type="username"
               id="username"
               name="username"
-            //   value={userData.username}
+              value={userData.username}
               onChange={handleChange}
               placeholder="Username"
               autoComplete="off"
@@ -81,7 +102,7 @@ export default function SignUpForm() {
                 type={visibility ? "text" : "password"}
                 id="password"
                 name="password"
-                // value={userData.password}
+                value={userData.password}
                 onChange={handleChange}
                 autoComplete="off"
                 placeholder="Password"
@@ -113,7 +134,7 @@ export default function SignUpForm() {
                 type={visibility ? "text" : "password"}
                 id="repeat-password"
                 name="repeat"
-                // value={userData.repeat}
+                value={userData.repeat}
                 onChange={handleChange}
                 autoComplete="off"
                 placeholder="Repeat Password"
@@ -140,14 +161,14 @@ export default function SignUpForm() {
           ) : (
             <button
               type="submit"
-              className="text-white bg-[#E50A14] hover:bg-[#c11119] focus:ring-2 focus:outline-none focus:ring-gray-400 font-bebas font-normal text-3xl px-3 py-2.5 text-center w-full"
+              className="text-white  bg-slate-600 hover:bg-slate-800  focus:ring-2 focus:outline-none focus:ring-gray-400 font-bebas font-normal text-3xl px-3 py-2.5 text-center w-full"
             >
               SIGN UP
             </button>
           )}
         </form>
         <Link to="/login">
-          <span className="text-white text-md btn btn-ghost btn-sm bg-[#E50A14] hover:bg-[#c11119] rounded-md absolute top-4 right-4 normal-case">
+          <span className="text-white text-md btn btn-ghost btn-sm  bg-slate-600 hover:bg-slate-800 rounded-md absolute top-4 right-4 normal-case">
             Sign In
           </span>
         </Link>

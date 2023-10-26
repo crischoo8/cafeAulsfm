@@ -4,8 +4,8 @@ import { Outlet } from "react-router-dom";
 
 // after Routes are set up, need to take in setUser prop {setUser}
 
-export default function AuthPage() {
-
+export default function AuthPage({setUser}) {
+    const [status, setStatus] = useState(null);
     return(
         <>
         <span className="absolute top-4 left-4">
@@ -16,13 +16,13 @@ export default function AuthPage() {
   
         <main className="text-white p-4 container flex mx-auto min-h-screen items-center justify-center">
           <Outlet
-            // context={[
-            //   setUser,
+            context={[
+              setUser,
             //   visibility,
             //   handlePasswordVisibility,
-            //   status,
-            //   setStatus,
-            // ]}
+              status,
+              setStatus,
+            ]}
           />
         </main>
       </>
