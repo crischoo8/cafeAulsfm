@@ -3,6 +3,7 @@ import SignUpForm from "./components/SignUpForm/SignUpForm";
 import LoginForm from "./components/LoginForm/LoginForm";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import HomePage from "./pages/HomePage/HomePage";
 import JournalPostCard from "./components/JournalPostCard/JournalPostCard";
 import JournalPostForm from "./components/JournalPostForm/JournalPostForm";
 import JournalPage from "./pages/JournalPage/JournalPage";
@@ -21,9 +22,9 @@ localStorage.debug = "cafeaulsfm:*";
 log("Start React");
 
 function App() {
-  const [user, setUser] = useState(getUser());
-  // const [user, setUser] = useState(false);
-  const [loading, setLoading] = useState(true);
+  // const [user, setUser] = useState(getUser());
+  const [user, setUser] = useState(true);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -42,7 +43,7 @@ function App() {
           <NavBar user={user} setUser={setUser} />
           {loading && (
             <div className="flex items-center justify-center h-[80vh]">
-              <span className="loading loading-spinner w-16 text-[#E50A14]"></span>
+              <span className="loading loading-spinner w-16 text-[#7BA6DE]"></span>
             </div>
           )}
           {!loading && (

@@ -29,7 +29,7 @@ export default function NavBar() {
               className={`mr-6 text-lg hover:text-xl ${
                 location.pathname === page.link
                   ? "text-white hover:text-lg"
-                  : "text-neutral-500 hover:text-white hover:bg-slate-600"
+                  : "text-neutral-500 hover:text-indigo-400 hover:bg-slate-600"
               }`}
             >
               {page.title}
@@ -37,14 +37,25 @@ export default function NavBar() {
           ))}
         </div>
         <div className="flex justify-center items-center">
+        {/* do i rly need the following 10 lines to hide the default arrow from details? */}
+        <style>
+        {`
+          details > summary {
+            list-style: none;
+          }
+          details > summary::-webkit-details-marker {
+            display: none;
+          }
+        `}
+      </style>
           {/* {renderAddApparelComponent()} */}
           <details className="dropdown dropdown-end">
             <summary className="btn btn-ghost pt-1 hover:bg-slate-600">
               <img
                 src={"/assets/fearnot-logo.jpeg"}
                 alt="profile-pic"
-                width={35}
-                height={35}
+                width={100}
+                height={100}
                 className="rounded-md"
               />
               <AiOutlineCaretDown className="hover:transform hover:rotate-90 hover:transition-transform" />
