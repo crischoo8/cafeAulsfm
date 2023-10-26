@@ -146,11 +146,11 @@ export default function SignUpForm() {
             </button>
           )}
         </form>
-        {/* <Link to="/login"> */}
+        <Link to="/login">
           <span className="text-white text-md btn btn-ghost btn-sm bg-[#E50A14] hover:bg-[#c11119] rounded-md absolute top-4 right-4 normal-case">
             Sign In
           </span>
-        {/* </Link> */}
+        </Link>
       </div>
     );
 }

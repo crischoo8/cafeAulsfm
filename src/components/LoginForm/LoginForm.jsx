@@ -97,11 +97,11 @@ export default function LoginForm() {
             <footer className="mt-6">
             Care for some CafeAuLsfm?{" "}
             <span className="text-neutral-700">
-                {/* <Link to="/signup"> */}
+                <Link to="/signup">
                 <span className="text-white text-md btn btn-ghost btn-sm bg-[#E50A14] hover:bg-[#c11119] rounded-md normal-case">
                     Sign up now!
                 </span>
-                {/* </Link> */}
+                </Link>
             </span>
             </footer>
         </form>
