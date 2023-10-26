@@ -29,7 +29,7 @@ export default function NavBar() {
               className={`mr-6 text-lg hover:text-xl ${
                 location.pathname === page.link
                   ? "text-white hover:text-lg"
-                  : "text-neutral-500 hover:text-white"
+                  : "text-neutral-500 hover:text-white hover:bg-slate-600"
               }`}
             >
               {page.title}
@@ -39,9 +39,9 @@ export default function NavBar() {
         <div className="flex justify-center items-center">
           {/* {renderAddApparelComponent()} */}
           <details className="dropdown dropdown-end">
-            <summary className="btn bg-black btn-ghost pt-1 hover:bg-black">
+            <summary className="btn btn-ghost pt-1 hover:bg-slate-600">
               <img
-                src={"/assets/nextfit-profile.jpg"}
+                src={"/assets/fearnot-logo.jpeg"}
                 alt="profile-pic"
                 width={35}
                 height={35}
