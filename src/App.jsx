@@ -24,7 +24,7 @@ log("Start React");
 function App() {
   const [user, setUser] = useState(getUser());
   // const [user, setUser] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -37,12 +37,12 @@ function App() {
       {user ? (
         <>
           <NavBar user={user} setUser={setUser} />
-          {loading && (
+          {!loading && (
             <div className="flex items-center justify-center h-[80vh]">
               <span className="loading loading-spinner w-16 text-[#7BA6DE]"></span>
             </div>
           )}
-          {!loading && (
+          {loading && (
             <Routes>
               <Route
                 path="/home"

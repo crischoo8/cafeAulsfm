@@ -35,7 +35,6 @@ export default function SignUpForm(user, setUser) {
             const newUser = await signUpService(userData);
             if (newUser !== null && newUser !== undefined) {
                 setUser(newUser);
-                console.log(newUser)
                 navigate("/home");
             }
         } catch(err) {

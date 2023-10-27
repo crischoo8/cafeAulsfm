@@ -1,7 +1,7 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AiOutlineCaretDown } from "react-icons/ai";
 
-export default function NavBar() {
+export default function NavBar({user, setUser}) {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -62,12 +62,12 @@ export default function NavBar() {
             </summary>
             <ul className="p-2 shadow menu dropdown-content z-[2] bg-base-100 rounded-box w-52 font-bebas tracking-widest bg-opacity-80 text-lg">
               <li className="ml-4 mt-2  text-neutral-400">
-                {/* {user.username} */}
-                user username 
+                {user.username}
+                {/* user username  */}
                 </li>
               <li className="ml-4 mt-2 mb-2 text-sm  text-neutral-400 break-all">
-                {/* {user.email} */}
-                user email
+                {user.email}
+                {/* user email */}
               </li>
               <li className="border-t border-white">
                 <Link to="/" className="text-lg">
