@@ -22,19 +22,15 @@ localStorage.debug = "cafeaulsfm:*";
 log("Start React");
 
 function App() {
-  // const [user, setUser] = useState(getUser());
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(getUser());
+  // const [user, setUser] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   return (
     <>
-    {/* <AuthPage/> */}
-    {/* <NavBar/> */}
-    {/* <SignUpForm/> */}
-    {/* <LoginForm/> */}
-    {/* <JournalPostForm/> */}
+    
 
     {/* define routes below */}
     <main className="min-h-screen min-w-screen bg-black text-white">
@@ -79,9 +75,9 @@ function App() {
       ) : (
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/" element={<AuthPage setUser={setUser} />}>
-            <Route path="signup" element={<SignUpForm />} />
-            <Route path="login" element={<LoginForm />} />
+          <Route path="/" element={<AuthPage user={user} setUser={setUser} />}>
+            <Route path="signup" element={<SignUpForm user={user} setUser={setUser}/>} />
+            <Route path="login" element={<LoginForm user={user} setUser={setUser}/>} />
             <Route path="*" element={<ErrorPage />} />
           </Route>
         </Routes>

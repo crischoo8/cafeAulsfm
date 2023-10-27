@@ -4,8 +4,8 @@ import { signUpService } from "../../utilities/users-service";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-export default function SignUpForm() {
-    const [setUser, status, setStatus] = useOutletContext();
+export default function SignUpForm(user, setUser) {
+    const [status, setStatus] = useState(null);
     const [visibility, setVisibility] = useState(false);
     const [userData, setUserData] = useState({
         email: "",
@@ -14,13 +14,16 @@ export default function SignUpForm() {
         repeat: "",
     });
    
+    const navigate = useNavigate();
+
      const handlePasswordVisibility = function() {
       setVisibility((prev) => !prev);
      }
 
      const handleChange = function(e) {
         setUserData({
-            ...userData, [e.target.name]: e.target.value,
+            ...userData, 
+            [e.target.name]: e.target.value,
         });
      };
 
@@ -29,27 +32,27 @@ export default function SignUpForm() {
         setStatus("loading");
 
         try{
-            const user = await signUpService(userData);
-            if (user !== null && user !== undefined) {
-                setUser(user);
+            const newUser = await signUpService(userData);
+            if (newUser !== null && newUser !== undefined) {
+                setUser(newUser);
+                console.log(newUser)
                 navigate("/home");
             }
         } catch(err) {
             setStatus("error");
-            console.log(err);
         } finally {
             setStatus(null);
         }
         
      };
-
+     
     return (
         <div className="container bg-neutral-400 mx-auto max-w-md p-4">
         <form className="p-2" 
         onSubmit={handleSubmit} 
         autoComplete="off">
           <header className="text-white  font-inter font-light text-2xl mb-4">
-            Join us at{" "} {JSON.stringify(userData)}
+            Join us at{" "}
             <span className=" text-slate-600 text-3xl font-bold">CafeAuLsfm!</span>
           </header>
           <div className="mb-6">
