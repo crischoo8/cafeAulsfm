@@ -23,7 +23,7 @@ log("Start React");
 
 function App() {
   // const [user, setUser] = useState(getUser());
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();

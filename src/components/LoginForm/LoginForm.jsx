@@ -30,7 +30,7 @@ export default function LoginForm() {
         <form className="p-2" 
         // onSubmit={handleSubmit}
         >
-            <header className="text-white font-inter font-light text-2xl mb-4">
+            <header className="text-white font-oswald font-inter font-light text-2xl mb-4">
             Log In 
             </header>
             <div className="mb-6">
@@ -89,7 +89,7 @@ export default function LoginForm() {
             ) : (
             <button
                 type="submit"
-                className="text-white  bg-slate-600 hover:bg-slate-800  focus:ring-2 focus:outline-none focus:ring-gray-400 font-bebas font-normal text-3xl px-3 py-2.5 text-center w-full"
+                className="text-white font-oswald bg-slate-600 hover:bg-slate-800  focus:ring-2 focus:outline-none focus:ring-gray-400 font-bebas font-normal text-3xl px-3 py-2.5 text-center w-full"
             >
                 LOGIN
             </button>
@@ -98,7 +98,7 @@ export default function LoginForm() {
             New to CafeAuLsfm?{" "}
             <span className="text-neutral-700">
                 <Link to="/signup">
-                <span className="text-white text-md btn btn-ghost btn-sm  bg-slate-600 hover:bg-slate-800  rounded-md normal-case">
+                <span className="text-white font-oswald text-md btn btn-ghost btn-sm  bg-slate-600 hover:bg-slate-800  rounded-md normal-case">
                     Sign up now!
                 </span>
                 </Link>

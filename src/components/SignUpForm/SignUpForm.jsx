@@ -48,7 +48,7 @@ export default function SignUpForm() {
         <form className="p-2" 
         onSubmit={handleSubmit} 
         autoComplete="off">
-          <header className="text-white font-inter font-light text-2xl mb-4">
+          <header className="text-white  font-inter font-light text-2xl mb-4">
             Join us at{" "} {JSON.stringify(userData)}
             <span className=" text-slate-600 text-3xl font-bold">CafeAuLsfm!</span>
           </header>
@@ -161,14 +161,14 @@ export default function SignUpForm() {
           ) : (
             <button
               type="submit"
-              className="text-white  bg-slate-600 hover:bg-slate-800  focus:ring-2 focus:outline-none focus:ring-gray-400 font-bebas font-normal text-3xl px-3 py-2.5 text-center w-full"
+              className="text-white font-oswald bg-slate-600 hover:bg-slate-800  focus:ring-2 focus:outline-none focus:ring-gray-400 font-bebas font-normal text-3xl px-3 py-2.5 text-center w-full"
             >
               SIGN UP
             </button>
           )}
         </form>
         <Link to="/login">
-          <span className="text-white text-md btn btn-ghost btn-sm  bg-slate-600 hover:bg-slate-800 rounded-md absolute top-4 right-4 normal-case">
+          <span className="text-white font-oswald text-md btn btn-ghost btn-sm  bg-slate-600 hover:bg-slate-800 rounded-md absolute top-4 right-4 normal-case">
             Sign In
           </span>
         </Link>

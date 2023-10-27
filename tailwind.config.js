@@ -6,7 +6,14 @@ module.exports = {
     "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        oswald: ['Oswald', "sans-serif"],
+      },
+      fontSize: {
+        large: "200px",
+      },
+    },
   },
   plugins: [
     require('flowbite/plugin'),
