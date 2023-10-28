@@ -13,7 +13,9 @@ import NavBar from "./components/NavBar/NavBar";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import { getUser } from "./utilities/users-service";
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate, useLocation} from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const log = debug("cafeaulsfm:src:App");
@@ -30,62 +32,53 @@ function App() {
 
   return (
     <>
-    
-
-    {/* define routes below */}
-    <main className="min-h-screen min-w-screen bg-black text-white">
-      {user ? (
-        <>
-          <NavBar user={user} setUser={setUser} />
-          {!loading && (
-            <div className="flex items-center justify-center h-[80vh]">
-              <span className="loading loading-spinner w-16 text-[#7BA6DE]"></span>
-            </div>
-          )}
-          {loading && (
-            
-            <Routes>
+      {/* define routes below */}
+      <main className="min-h-screen min-w-screen bg-black text-white">
+        <ToastContainer />
+        {user ? (
+          <>
+            <NavBar user={user} setUser={setUser} />
+            {!loading && (
+              <div className="flex items-center justify-center h-[80vh]">
+                <span className="loading loading-spinner w-16 text-[#7BA6DE]"></span>
+              </div>
+            )}
+            {loading && (
+              <Routes>
+                <Route path="/home" element={<HomePage user={user} />} />
+                <Route path="/journal" element={<JournalPage />} />
+                {/* create a /journal/new route! */}
+                <Route path="/journal/new" element={<JournalPostForm/>} />
+                <Route path="/announcements" element={<AdminPage />} />
+                {/*  create a /announcements/new route */}
+                {/* for creating new admin posts ^^ */}
+                <Route path="/bucketlist" element={<BucketListPage />} />
+                <Route path="*" element={<ErrorPage />} />
+              </Routes>
+            )}
+          </>
+        ) : (
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route
+              path="/"
+              element={<AuthPage user={user} setUser={setUser} />}
+            >
               <Route
-                path="/home"
-                element={
-                  <HomePage user={user} />
-                }
+                path="signup"
+                element={<SignUpForm user={user} setUser={setUser} />}
               />
               <Route
-                path="/journal"
-                element={
-                  <JournalPage/>
-                }
-              />
-              <Route
-                path="/announcements"
-                element={
-                  <AdminPage/>
-                }
-              />
-              <Route
-                path="/bucketlist"
-                element={
-                  <BucketListPage/>
-                }
+                path="login"
+                element={<LoginForm user={user} setUser={setUser} />}
               />
               <Route path="*" element={<ErrorPage />} />
-            </Routes>
-          )}
-        </>
-      ) : (
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/" element={<AuthPage user={user} setUser={setUser} />}>
-            <Route path="signup" element={<SignUpForm user={user} setUser={setUser}/>} />
-            <Route path="login" element={<LoginForm user={user} setUser={setUser}/>} />
-            <Route path="*" element={<ErrorPage />} />
-          </Route>
-        </Routes>
-      )}
-    </main>
+            </Route>
+          </Routes>
+        )}
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,5 +1,5 @@
 import { RxCross1 } from "react-icons/rx";
-import { PiPencil, PiPlusDuotone, PiTrashDuotone } from "react-icons/pi";
+import { PiCoffeeDuotone, PiPencil, PiLinkSimpleBold,PiTrashDuotone } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { FaRegFaceKiss } from "react-icons/fa6";
 
@@ -30,7 +30,7 @@ export default function JournalPostCard() {
 
         <img
           className="h-auto max-w-full rounded-lg object-cover mx-auto"
-          src="./public/assets/rizzCat.jpeg"/>
+          src="./assets/rizzCat.jpeg"/>
         <div className="flex flex-col justify-between p-2 leading-normal">
           {/* title */}
           <p className=" text-zinc-500" >
@@ -42,7 +42,9 @@ export default function JournalPostCard() {
           </p>
            {/* URL / Link */}
            <p className="text-zinc-600 hover:text-indigo-400">
-              <a href="https://www.tiktok.com/@fish___gang/video/7282884444090895658" target="blank">link</a>
+              <a href="https://www.tiktok.com/@fish___gang/video/7282884444090895658" target="blank">
+              <PiLinkSimpleBold/>
+              </a>
           </p>
           {/* tags */}
           <p className="text-zinc-600  hover:text-indigo-400">
@@ -50,8 +52,7 @@ export default function JournalPostCard() {
           </p>
 
           <p className="text-zinc-600">
-              {/* <FaRegFaceKiss className="ml-1" /> */}
-           
+              <PiCoffeeDuotone/>
           </p>
         </div>
       </div>

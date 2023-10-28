@@ -3,6 +3,8 @@ import { loginService } from "../../utilities/users-service";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
 
 export default function LoginForm({user, setUser}) {
       const [status, setStatus] = useState(null);
@@ -17,6 +19,8 @@ export default function LoginForm({user, setUser}) {
       });
 
       const navigate = useNavigate();
+      //   test TOASTIFY
+      const notify = () => toast("Succesful Login");
 
        const handlePasswordVisibility = function() {
         setVisibility((prev) => !prev);
@@ -37,8 +41,10 @@ export default function LoginForm({user, setUser}) {
         try {
             const user = await loginService(credentials);
             if (user !== null && user !== undefined) {
-                setUser(user);
-                await navigate("/home");
+                // await notify();
+                await setUser(user);
+                navigate("/home");
+                
             }
         } catch (err) {
             setCredentials({
@@ -112,10 +118,12 @@ export default function LoginForm({user, setUser}) {
                 <span className="loading loading-dots loading-lg bg-gray-500 px-3 py-2.5 "></span>
             </div>
             ) : (
+            
             <button
                 type="submit"
                 className="text-white font-oswald bg-slate-600 hover:bg-slate-800  focus:ring-2 focus:outline-none focus:ring-gray-400 font-bebas font-normal text-3xl px-3 py-2.5 text-center w-full"
-            >
+                // onClick={notify}
+         >
                 LOGIN
             </button>
             )}

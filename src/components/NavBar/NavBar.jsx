@@ -1,11 +1,31 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { logOutService } from "../../utilities/users-service";
 import { AiOutlineCaretDown } from "react-icons/ai";
+import { PiNotePencilBold, PiPlusSquareFill } from "react-icons/pi";
 
 export default function NavBar({user, setUser}) {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const renderAddApparelComponent = () => (
+        <div
+          className={`flex items-center ${
+            location.pathname === "/journal/new"
+              ? "text-white"
+              : "text-neutral-500"
+          } hover:text-white hover:text-3xl text-2xl mr-3`}
+        >
+          <Link to="/journal/new" className="flex items-center justify-center">
+            <div
+              className="tooltip tooltip-bottom flex items-center justify-center"
+              data-tip="Add Journal Post"
+            >
+              <PiNotePencilBold/>
+              <PiPlusSquareFill />
+            </div>
+          </Link>
+        </div>
+      );
     // need to add in BucketList Page into NavBar
     const pages = [
         { link: "/home", title: "Home" },
@@ -20,7 +40,7 @@ export default function NavBar({user, setUser}) {
     setUser(null);
     navigate("/");
     };
-    
+
     return (
         <nav>
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen p-4 font-inter font-extralight">
@@ -56,7 +76,7 @@ export default function NavBar({user, setUser}) {
           }
         `}
       </style>
-          {/* {renderAddApparelComponent()} */}
+          {renderAddApparelComponent()}
           <details className="dropdown dropdown-end">
             <summary className="btn btn-ghost pt-1 hover:bg-slate-600">
               <img
