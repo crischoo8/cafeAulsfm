@@ -1,10 +1,11 @@
 import JournalPostCard from "../../components/JournalPostCard/JournalPostCard"
 
-export default function HomePage() {
+export default function HomePage({user}) {
 
     return(
         <>
-         <h1>Welcome to CafeAuLsfm HomePage</h1>
+         <h6>this is the HomePage</h6>
+         <h1>Welcome Home {user.username}! Ⴚტ◕‿◕ტჂ</h1>
          <br/>
          <JournalPostCard/>
         </>

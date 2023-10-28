@@ -1,10 +1,20 @@
-import { signUpAPI } from "./users-api";
+import { signUpAPI, loginAPI} from "./users-api";
 
 export async function signUpService(userData) {
   const data = await signUpAPI(userData);
   localStorage.setItem("token", data.data.token);
   return getUser();
 }
+
+export async function loginService(credentials) {
+    const data = await loginAPI(credentials);
+    localStorage.setItem("token", data.data.token);
+    return getUser();
+  }
+  
+  export async function logOutService() {
+    localStorage.removeItem("token");
+  }
 
 export function getToken() {
     const token = localStorage.getItem("token");

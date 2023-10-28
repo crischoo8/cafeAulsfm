@@ -4,7 +4,7 @@ import { signUpService } from "../../utilities/users-service";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-export default function SignUpForm(user, setUser) {
+export default function SignUpForm({user, setUser}) {
     const [status, setStatus] = useState(null);
     const [visibility, setVisibility] = useState(false);
     const [userData, setUserData] = useState({

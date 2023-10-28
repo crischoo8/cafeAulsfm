@@ -35,7 +35,32 @@ async function create(req, res) {
 }
 
 
-
+async function login(req, res) {
+    debug("login user body: %o", req.body);
+    try {
+      const user = await User.findOne({ username: req.body.username });
+      debug("user", user);
+      if (user === null) throw new Error("User does not exist.");
+      const match = await bcrypt.compare(req.body.password, user.password);
+      if (!match) throw new Error("Incorrect password!");
+      const token = createJWT(user);
+      sendResponse(res, 200, { token: token });
+    } catch (err) {
+      debug("Error creating: %o", err);
+      let status = 401;
+      let message = "Unauthorised";
+  
+      if (err.message === "User does not exist.") {
+        status = 404;
+        message = err.message;
+      }
+      if (err.message === "Incorrect password!") {
+        status = 401;
+        message = err.message;
+      }
+      sendResponse(res, status, null, message);
+    }
+  }
 
 
 
@@ -51,4 +76,4 @@ function createJWT(user) {
   }
 
 
-  module.exports = { create };
+  module.exports = { create, login };

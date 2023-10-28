@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { loginService } from "../../utilities/users-service";
+import { useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-export default function LoginForm() {
+export default function LoginForm({user, setUser}) {
+      const [status, setStatus] = useState(null);
       const [visibility, setVisibility] = useState(false);
 
       // initialise the form data format - create an object ah
@@ -13,7 +15,9 @@ export default function LoginForm() {
         username: "",
         password: "",
       });
-        
+
+      const navigate = useNavigate();
+
        const handlePasswordVisibility = function() {
         setVisibility((prev) => !prev);
        }
@@ -25,10 +29,31 @@ export default function LoginForm() {
             ...credentials, [e.target.name]: e.target.value,
         });
        };
+
+       const handleSubmit = async function(e) {
+        e.preventDefault();
+        setStatus("loading");
+
+        try {
+            const user = await loginService(credentials);
+            if (user !== null && user !== undefined) {
+                setUser(user);
+                await navigate("/home");
+            }
+        } catch (err) {
+            setCredentials({
+                username: "",
+                password: "",
+              });
+              setStatus("error");
+        } finally {
+            setStatus(null);
+        }
+       };
     return(
     <div className="container bg-neutral-400 mx-auto max-w-md p-4">
         <form className="p-2" 
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         >
             <header className="text-white font-oswald font-inter font-light text-2xl mb-4">
             Log In 
@@ -45,7 +70,7 @@ export default function LoginForm() {
                 id="usernameLogin"
                 name="username"
                 autoComplete="off"
-                // value={credentials.username}
+                value={credentials.username}
                 onChange={handleChange}
                 className="bg-neutral-300 text-gray-900 text-sm focus:outline-none block w-full p-2.5 cursor-text font-inter font-extralight border-none"
                 required
@@ -64,7 +89,7 @@ export default function LoginForm() {
                 id="passwordLogin"
                 name="password"
                 autoComplete="off"
-                // value={credentials.password}
+                value={credentials.password}
                 onChange={handleChange}
                 className="bg-neutral-300 text-gray-900 text-sm focus:ring-zinc-500 block w-full p-2.5 cursor-text font-inter font-extralight border-none"
                 required

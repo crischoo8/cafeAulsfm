@@ -1,4 +1,5 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { logOutService } from "../../utilities/users-service";
 import { AiOutlineCaretDown } from "react-icons/ai";
 
 export default function NavBar({user, setUser}) {
@@ -13,6 +14,13 @@ export default function NavBar({user, setUser}) {
         { link: "/bucketlist", title: "My Bucket List" },
       ];
 
+    const handleLogOut = (e) => {
+    e.preventDefault();
+    logOutService();
+    setUser(null);
+    navigate("/");
+    };
+    
     return (
         <nav>
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen p-4 font-inter font-extralight">
@@ -70,7 +78,7 @@ export default function NavBar({user, setUser}) {
                 {/* user email */}
               </li>
               <li className="border-t border-white">
-                <Link to="/" className="text-lg">
+                <Link to="/" onClick={handleLogOut} className="text-lg">
                   Logout
                 </Link>
               </li>

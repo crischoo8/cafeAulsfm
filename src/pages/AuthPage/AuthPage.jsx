@@ -18,8 +18,6 @@ export default function AuthPage({setUser}) {
           <Outlet
             context={[
               setUser,
-            //   visibility,
-            //   handlePasswordVisibility,
               status,
               setStatus,
             ]}

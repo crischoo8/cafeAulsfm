@@ -13,7 +13,7 @@ import NavBar from "./components/NavBar/NavBar";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import { getUser } from "./utilities/users-service";
 import { useState, useEffect } from "react";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation} from "react-router-dom";
 
 
 const log = debug("cafeaulsfm:src:App");
@@ -43,11 +43,12 @@ function App() {
             </div>
           )}
           {loading && (
+            
             <Routes>
               <Route
                 path="/home"
                 element={
-                  <HomePage/>
+                  <HomePage user={user} />
                 }
               />
               <Route
