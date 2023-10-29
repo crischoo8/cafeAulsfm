@@ -1,22 +1,27 @@
 import debug from "debug";
-import { FaCaretDown, FaRegFileImage } from "react-icons/fa6";
+import { FaRegFileImage } from "react-icons/fa6";
 import { useState } from "react";
 import { GiPhotoCamera} from "react-icons/gi";
 import { Link } from "react-router-dom";
+import {
+    addPostService,
+    uploadToS3Service,
+    swalBasicSettings,
+  } from "../../utilities/posts-service";
 
 const log = debug("cafeaulsfm:src:components:JournalPostForm");
 
-export default function JournalPostForm() {
+export default function JournalPostForm({post, setPost}) {
 
     // images is not in this initialJournalData but it will be appended
-    const initialJournalData= {
+    const initialPostData= {
         title: "",
         description: "",
         url: "",
         tag: "",
       };
 
-    const [journalData, setJournalData] = useState(initialJournalData);
+    const [postData, setPostData] = useState(initialPostData);
     const [imageFiles, setImageFiles] = useState({
         images: [],
         preview: [],
@@ -25,15 +30,15 @@ export default function JournalPostForm() {
 
     const [status, setStatus] = useState(null);
 
-    const resetJournalPostForm = () => {
-        setJournalData(initialJournalData);
+    const resetPostForm = () => {
+        setPostData(initialPostData);
         setImageFiles({ images: [], preview: [], filenames: [] });
         setStatus(null);
       };
 
     const handleChange = (e) => {
-        setJournalData({
-          ...journalData,
+        setPostData({
+          ...postData,
           [e.target.name]: e.target.value,
         });
       };
@@ -57,6 +62,45 @@ export default function JournalPostForm() {
     log("Image uploaded");
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (imageFiles.images.length === 0) return;
+        setStatus("loading");
+    
+        const imgFormData = new FormData();
+        imageFiles.images.forEach((img) => {
+          imgFormData.append("images", img);
+        });
+        log("images appended to form", imgFormData);
+        try {
+          const imgURL = await uploadToS3Service(imgFormData);
+          const newPost = await addPostService({
+            ...postData,
+            images: imgURL,
+          });
+          Swal.fire(swalBasicSettings("Added to Wardrobe!", "success"));
+          setPost([...post, newPost]);
+          resetPostForm();
+        } catch (err) {
+          if (err.message === "Unexpected end of JSON input") {
+            Swal.fire({
+              ...swalBasicSettings("Internal Server Error", "error"),
+              text: "Please try again later.",
+            });
+          } else {
+            Swal.fire({
+              ...swalBasicSettings("Error", "error"),
+              text: err.message,
+              confirmButtonText: "Try Again",
+            });
+          }
+          setStatus("error");
+        } finally {
+          setStatus("success");
+        }
+      };
+    
+
     const handleRemoveImage = () => {
         setImageFiles({
           images: [],
@@ -70,7 +114,7 @@ export default function JournalPostForm() {
         <section className="flex justify-center items-center min-h-[80vh]">
       <form
         className="container bg-neutral-400 mx-auto max-w-lg px-4 pb-8"
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
         autoComplete="off"
         encType="multipart/form-data"
       >
@@ -88,15 +132,13 @@ export default function JournalPostForm() {
             <input
               id="title"
               name="title"
-              value={journalData.title}
+              value={postData.title}
               onChange={handleChange}
               required
               className="bg-neutral-300 text-gray-900 text-sm focus:ring-zinc-500 block w-full p-2.5 cursor-pointer font-inter font-extralight"
             >
-              
-              
             </input>
-            {/* <FaCaretDown className="absolute right-3 top-7 text-gray-500 pointer-events-none z-50 text-3xl" /> */}
+
           </div>
           <div className="w-1/2 pl-2 relative">
             <label
@@ -108,14 +150,13 @@ export default function JournalPostForm() {
             <textarea
               id="description"
               name="description"
-              value={journalData.description}
+              value={postData.description}
               onChange={handleChange}
-              disabled={!journalData.title}
+              disabled={!postData.title}
               required
               className="bg-neutral-300 text-gray-900 text-sm focus:ring-zinc-500 block w-full p-2.5 cursor-pointer font-inter font-extralight disabled:cursor-default"
             >
             </textarea>
-            {/* <FaCaretDown className="absolute right-1 top-7 text-gray-500 pointer-events-none z-50 text-3xl" /> */}
           </div>
         </div>
 
@@ -131,15 +172,13 @@ export default function JournalPostForm() {
             <input
               id="url"
               name="url"
-              value={journalData.url}
+              value={postData.url}
               onChange={handleChange}
               required
               className="bg-neutral-300 text-gray-900 text-sm focus:ring-zinc-500 block w-full p-2.5 cursor-pointer font-inter font-extralight"
             >
-              
-              
             </input>
-            {/* <FaCaretDown className="absolute right-3 top-7 text-gray-500 pointer-events-none z-50 text-3xl" /> */}
+
           </div>
           <div className="w-1/2">
             <div className="pr-2 mb-6 relative">
@@ -152,7 +191,7 @@ export default function JournalPostForm() {
               <input
                 id="tag"
                 name="tag"
-                value={journalData.tag}
+                value={postData.tag}
                 onChange={handleChange}
                 required
                 className="bg-neutral-300 text-gray-900 text-sm focus:ring-zinc-500 block w-full p-2.5 cursor-pointer font-inter font-extralight"

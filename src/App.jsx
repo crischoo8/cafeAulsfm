@@ -11,7 +11,9 @@ import AdminPage from "./pages/AdminPage/AdminPage";
 import BucketListPage from "./pages/BucketListPage/BucketListPage";
 import NavBar from "./components/NavBar/NavBar";
 import AuthPage from "./pages/AuthPage/AuthPage";
+import PostEditForm from "./components/JournalPostForm/PostEditForm";
 import { getUser } from "./utilities/users-service";
+import { getAllPostService } from "./utilities/posts-service";
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -25,10 +27,31 @@ log("Start React");
 
 function App() {
   const [user, setUser] = useState(getUser());
-  // const [user, setUser] = useState(false);
+  const [post, setPost] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const fetchPostData = async () => {
+    try {
+      const allPost = await getAllPostService();
+      setPost(allPost);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  // useEffect(() => {
+  //   if (user) {
+  //     fetchPostData();
+  //     if (location.pathname === "/") {
+  //       navigate("/home");
+  //     }
+  //   }
+  // }, [user, navigate, location]);
 
   return (
     <>
@@ -48,8 +71,16 @@ function App() {
                 <Route path="/home" element={<HomePage user={user} />} />
                 <Route path="/journal" element={<JournalPage />} />
                 {/* create a /journal/new route! */}
-                <Route path="/journal/new" element={<JournalPostForm/>} />
-                <Route path="/journal/:postID/edit" element={<PostEditForm/>} />
+                <Route path="/journal/new" 
+                post={post}
+                setPost={setPost}
+                element={<JournalPostForm/>} />
+
+                <Route path="/journal/:postID/edit" 
+                post={post}
+                setPost={setPost}
+                element={<PostEditForm/>} />
+                
                 <Route path="/announcements" element={<AdminPage />} />
                 {/*  create a /announcements/new route */}
                 {/* for creating new admin posts ^^ */}
