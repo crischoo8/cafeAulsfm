@@ -4,11 +4,13 @@ const express = require("express");
 const path = require("path");
 const logger = require("morgan");
 const debug = require("debug")("cafeauslsfm:server");
+const checkToken = require("./config/checkToken");
+const ensureLoggedIn = require("./config/ensureLoggedIn");
 
 
 //* Routers
 const usersRouter = require("./routes/usersRouter");
-// const wardrobeRouter = require("./routes/wardrobeRouter");
+const postsRouter = require("./routes/postsRouter");
 // const outfitRouter = require("./routes/outfitsRouter");
 
 //* App
@@ -19,11 +21,11 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "dist")));
 // Middleware to verify token and assign user object of payload to req.user.
-// app.use(checkToken);
+app.use(checkToken);
 
 //* Routes -> all routes to start with /api
 app.use("/api/users", usersRouter);
-// app.use("/api/wardrobe", ensureLoggedIn, wardrobeRouter);
+app.use("/api/journal", ensureLoggedIn, postsRouter);
 // app.use("/api/outfits", ensureLoggedIn, outfitRouter);
 
 //? This should be the last route -> this is for react router

@@ -49,6 +49,7 @@ function App() {
                 <Route path="/journal" element={<JournalPage />} />
                 {/* create a /journal/new route! */}
                 <Route path="/journal/new" element={<JournalPostForm/>} />
+                <Route path="/journal/:postID/edit" element={<PostEditForm/>} />
                 <Route path="/announcements" element={<AdminPage />} />
                 {/*  create a /announcements/new route */}
                 {/* for creating new admin posts ^^ */}
