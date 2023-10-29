@@ -80,7 +80,7 @@ function App() {
                 post={post}
                 setPost={setPost}
                 element={<PostEditForm/>} />
-                
+
                 <Route path="/announcements" element={<AdminPage />} />
                 {/*  create a /announcements/new route */}
                 {/* for creating new admin posts ^^ */}

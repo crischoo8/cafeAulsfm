@@ -2,7 +2,8 @@ const AWS = require("aws-sdk");
 const multer = require("multer");
 const debug = require("debug")("nextfit:config:uploadToS3");
 const { v4: uuidv4 } = require("uuid");
-const Wardrobe = require("../models/wardrobeModel");
+const Post = require("../models/postModel");
+// help lah, nvr use the code above^^
 
 const AWS_BUCKET_NAME = process.env.AWS_BUCKET_NAME;
 const AWS_REGION = process.env.AWS_REGION;
@@ -63,9 +64,9 @@ module.exports = {
     });
   },
   deleteFromS3: async function (req, res, next) {
-    const apparelToDelete = await Wardrobe.findById(req.params.apparelID);
-    debug("apparelToDelete: %o", apparelToDelete);
-    const s3ObjectID = apparelToDelete.s3ObjectID;
+    const postToDelete = await Post.findById(req.params.apparelID);
+    debug("postToDelete: %o", postToDelete);
+    const s3ObjectID = postToDelete.s3ObjectID;
     debug("s3ObjectID virtual:", s3ObjectID);
 
     const params = {
