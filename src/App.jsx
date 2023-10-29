@@ -38,20 +38,21 @@ function App() {
       setPost(allPost);
     } catch (err) {
       console.error(err);
-    } finally {
-      setLoading(false);
-    }
+    } 
+    // finally {
+    //   setLoading(false);
+    // }
   };
 
 
-  // useEffect(() => {
-  //   if (user) {
-  //     fetchPostData();
-  //     if (location.pathname === "/") {
-  //       navigate("/home");
-  //     }
-  //   }
-  // }, [user, navigate, location]);
+  useEffect(() => {
+    if (user) {
+      fetchPostData();
+      if (location.pathname === "/") {
+        navigate("/home");
+      }
+    }
+  }, [user, navigate, location]);
 
   return (
     <>

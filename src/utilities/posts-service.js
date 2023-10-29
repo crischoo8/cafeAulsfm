@@ -42,7 +42,7 @@ import {
       icon: icon,
       background: "#6B6B6B",
       color: "white",
-      confirmButtonColor: "#E50914",
+      confirmButtonColor: "#7BA6DE",
       cancelButtonColor: "#000000",
     };
     return settings;
