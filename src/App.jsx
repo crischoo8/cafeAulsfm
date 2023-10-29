@@ -86,6 +86,7 @@ function App() {
                 {/*  create a /announcements/new route */}
                 {/* for creating new admin posts ^^ */}
                 <Route path="/bucketlist" element={<BucketListPage />} />
+                {/* create a bucketlist/new */}
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             )}
