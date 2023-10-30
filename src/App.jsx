@@ -71,7 +71,7 @@ function App() {
             {loading && (
               <Routes>
                 <Route path="/home" element={<HomePage user={user} />} />
-                <Route path="/journal" element={<JournalPage user={user} post={post}/>} />
+                <Route path="/journal" element={<JournalPage user={user} post={post} setPost={setPost}/>} />
                 {/* create a /journal/new route! */}
                 <Route path="/journal/new" 
                 post={post}

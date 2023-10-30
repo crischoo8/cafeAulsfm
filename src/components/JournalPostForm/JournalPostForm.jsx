@@ -2,7 +2,7 @@ import debug from "debug";
 import { FaRegFileImage } from "react-icons/fa6";
 import { useState } from "react";
 import { GiPhotoCamera } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   addPostService,
   uploadToS3Service,
@@ -13,7 +13,7 @@ import Swal from "sweetalert2";
 const log = debug("cafeaulsfm:src:components:JournalPostForm");
 
 export default function JournalPostForm({ post, setPost}) {
-  // images is not in this initialJournalData but it will be appended
+  // images is not in this initialPostData but it will be appended
   const initialPostData = {
     title: "",
     description: "",
@@ -79,11 +79,20 @@ export default function JournalPostForm({ post, setPost}) {
         ...postData,
         images: imgURL,
       });
+      
       Swal.fire(swalBasicSettings("Your Post is Uploaded!", "success"));
       setPost([...post, newPost]);
       resetPostForm();
+    
     } catch (err) {
-      if (err.message === "Unexpected end of JSON input") {
+        if (err.message === "post is not iterable") {
+            setPost([...post, newPost]);
+            resetPostForm();
+            Swal.fire({
+                ...swalBasicSettings("OK"),
+                text: "Post Created.",
+            });
+            } else if (err.message === "Unexpected end of JSON input") {
         Swal.fire({
           ...swalBasicSettings("Internal Server Error", "error"),
           text: "Please try again later.",

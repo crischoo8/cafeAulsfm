@@ -35,7 +35,7 @@ export default function LandingPage() {
       </div>
       <Link to="/login">
         <span className="text-white font-oswald text-md btn btn-ghost btn-sm  bg-slate-600 hover:bg-slate-800 rounded-md absolute top-4 right-4 normal-case">
-          Sign In
+          Log In
         </span>
       </Link>
         </>

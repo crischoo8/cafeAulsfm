@@ -12,14 +12,14 @@ export default function JournalPostCard({postItem, index, handleDelete}) {
       <div className="bg-gray-200 p-3 m-1 h-[100%] rounded-lg shadow md:flex-row md:max-w-xl">
         <span className="flex items-center justify-end">
           <span className="tooltip tooltip-top" data-tip="Edit Post">
-            {/* <Link to={`/wardrobe/${item._id}/edit`}> */}
+            <Link to={`/journal/${postItem?._id}/edit`}>
               <PiPencil className="text-xl mb-2 mr-[2px] text-black cursor-pointer" />
-            {/* </Link> */}
+            </Link>
           </span>
         
           <span className="tooltip tooltip-top" data-tip="Delete Post">
             <PiTrashDuotone
-            onClick={() => handleDelete(postItem._id)}
+            onClick={() => handleDelete(postItem?._id)}
               className="text-xl mb-2 text-black cursor-pointer"
             />
           </span>
