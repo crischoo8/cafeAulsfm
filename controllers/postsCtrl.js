@@ -44,6 +44,7 @@ async function create(req, res) {
   }
 }
 
+// i think i need a getAll function just for admin posts (whoever the duck the admin is)
 async function getAll(req, res) {
   debug("see req.user: %o", req.user);
   try {
@@ -58,19 +59,8 @@ async function getAll(req, res) {
 async function del(req, res) {
   debug("see req.params: %o", req.params);
   try {
-    // this chunk is from NextFit and deletes related outfits that have a particular piece in it
-    // will return null if cannot findOne
-    // const category = req.params.main;
-    // if (category === "Top") {
-    //   await Outfit.deleteMany({ "apparels.top": req.params.postID });
-    // } else if (category === "Bottom") {
-    //   await Outfit.deleteMany({
-    //     "apparels.bottom": req.params.postID,
-    //   });
-    // }
-
     const post = await Post.findOneAndDelete({
-    // NEED to edit 
+      // NEED to edit
       _id: req.params.postID,
       user: req.user._id,
     });
@@ -81,18 +71,20 @@ async function del(req, res) {
   }
 }
 
+// holy fuck cristelle, pls edit this
+
 async function updateOne(req, res) {
   debug("see req.user: %o", req.user);
   try {
     const updatedPost = await Post.findByIdAndUpdate(
-        // sth to do w useParams?
-        // NEED to edit 
+      // sth to do w useParams?
+      // NEED to edit
       { _id: req.params.postID },
       {
-        mainCategory: req.body.mainCategory,
-        subCategory: req.body.subCategory,
-        fit: req.body.fit,
-        wornFrequency: 0,
+        title: req.body.title,
+        description: req.body.description,
+        url: req.body.url,
+        tag: req.body.tag,
         imageURL: req.body.images,
         user: req.user._id,
       },
@@ -116,3 +108,14 @@ async function updateOne(req, res) {
 }
 
 module.exports = { uploadImg, create, getAll, del, updateOne };
+
+// this chunk is from NextFit and deletes related outfits that have a particular piece in it
+// will return null if cannot findOne
+// const category = req.params.main;
+// if (category === "Top") {
+//   await Outfit.deleteMany({ "apparels.top": req.params.postID });
+// } else if (category === "Bottom") {
+//   await Outfit.deleteMany({
+//     "apparels.bottom": req.params.postID,
+//   });
+// }
