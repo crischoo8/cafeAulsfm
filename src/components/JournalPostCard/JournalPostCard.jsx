@@ -1,10 +1,8 @@
-import { RxCross1 } from "react-icons/rx";
 import { PiCoffeeDuotone, PiPencil, PiLinkSimpleBold,PiTrashDuotone } from "react-icons/pi";
 import { Link } from "react-router-dom";
-import { FaRegFaceKiss } from "react-icons/fa6";
 
-// has placeholder values for now 
-export default function JournalPostCard({postItem, index, handleDelete}) {
+
+export default function JournalPostCard({postItem, handleDelete}) {
     
     return(
         <>
