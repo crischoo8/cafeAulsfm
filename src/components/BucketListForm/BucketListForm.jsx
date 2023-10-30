@@ -1,12 +1,10 @@
 import debug from "debug";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// REMOVE THIS
 import {
-  addPostService,
-  uploadToS3Service,
+  addCardService,
   swalBasicSettings,
-} from "../../utilities/posts-service";
+} from "../../utilities/cards-service";
 import Swal from "sweetalert2";
 
 export default function BucketListForm() {
@@ -41,7 +39,7 @@ export default function BucketListForm() {
         e.preventDefault();
         
         try {
-          const newBucket = await addPostService({
+          const newBucket = await addCardService({
             ...bucketData
           });
     
