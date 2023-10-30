@@ -43,6 +43,7 @@ export default function JournalPage({ post, setPost }) {
       {/* {JSON.stringify(post.length)} */}
       {/* conditional rendering based on length of posts */}
       {post.length ==0 && <JournalHero/>}
+      
       {post.length !==0 && post.map((postItem, index) => (
         <JournalPostCard
           key={postItem._id}
