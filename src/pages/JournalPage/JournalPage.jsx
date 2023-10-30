@@ -40,9 +40,10 @@ export default function JournalPage({ post, setPost }) {
   return (
     <>
       <h1>hello! your Journal is here!</h1>
-      {/* <JournalHero/>    */}
-      {/* <JournalPostCard/> */}
-      {post.map((postItem, index) => (
+      {/* {JSON.stringify(post.length)} */}
+      {/* conditional rendering based on length of posts */}
+      {post.length ==0 && <JournalHero/>}
+      {post.length !==0 && post.map((postItem, index) => (
         <JournalPostCard
           key={postItem._id}
           index={index}
