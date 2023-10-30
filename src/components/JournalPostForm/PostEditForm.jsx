@@ -4,6 +4,7 @@ import { useState } from "react";
 import { GiPhotoCamera} from "react-icons/gi";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
+
 const log = debug("cafeaulsfm:src:components:JournalPostForm");
 
 export default function PostEditForm({post, setPost}) {

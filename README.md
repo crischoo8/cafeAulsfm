@@ -8,7 +8,6 @@
 - [Technologies Used](#technologies-used)
 - [Getting Started](#getting-started)
 - [Project Brief](#project-brief)
-- [Roles](#roles)
 - [Challenges](#challenges)
 - [Key Learnings](#key-learnings)
 - [Future Developments](#future-developments)
@@ -16,22 +15,22 @@
 
 ## Introduction
 
-Nextfit App is a cutting-edge solution designed to transform the way you manage your clothing collection. It provides invaluable assistance in making informed outfit choices, tracks the frequency of clothing item usage within your wardrobe, and prompts you to consider donating less-worn pieces. By doing so, it not only promotes sustainable practices but also empowers users to declutter their collection in a meaningful way.
+CafeAuLsfm App provides a platform that allows users to be near to the source and far from the noise, making their stanning activities more peaceful. It provides invaluable assistance in making informed outfit choices, tracks the frequency of clothing item usage within your wardrobe, and prompts you to consider donating less-worn pieces. By doing so, it not only promotes sustainable practices but also empowers users to declutter their collection in a meaningful way.
 
-<img src="https://raw.githubusercontent.com/cycedmund/nextfit-app/main/public/readme/nextfit-landing.png">
+<img src="./public/assets/cafeaulsfm.jpeg">
 
 ## Features
 
 - **User-friendly interface:** The app features an intuitive and visually appealing user interface that allows users to navigate easily through the app.
-- **Random Outfit Generator:** The core feature of the app is its ability to generate random outfits based on the weather. Simply upload your clothing items, and it will consider the current weather conditions to offer suitable outfit recommendations.
-- **Wardrobe Management:** Maintain a digital wardrobe by adding your own clothing items. You can upload pictures, categorize items, and save them for future outfit suggestions.
-- **Save For Later:** Save your favorite outfit combinations to use on another day.
+- **User Journal Page:** The core feature of the app is its ability to generate random outfits based on the weather. Simply upload your clothing items, and it will consider the current weather conditions to offer suitable outfit recommendations.
+- **Announcement Page (Admin Page):** Maintain a digital wardrobe by adding your own clothing items. You can upload pictures, categorize items, and save them for future outfit suggestions.
+- **Bucket List:** Save your favorite outfit combinations to use on another day.
 
 <img src="https://raw.githubusercontent.com/cycedmund/nextfit-app/main/public/readme/nextfit-home.png">
 
 ## Deployment
 
-Nextfit App is deployed on [Render](https://render.com/). You can access it [here](https://nextfit-app.onrender.com/).
+CafeAuLsfm App is deployed on [Render](https://render.com/). You can access it [here](https://nextfit-app.onrender.com/).
 
 ## Technologies Used
 
@@ -46,17 +45,16 @@ Nextfit App is deployed on [Render](https://render.com/). You can access it [her
 
 ### Wireframes
 
-For our wireframe, we utilized Figma to design the prototype pages and components for our app. You can access the wireframe [here](https://www.figma.com/file/Qkiylh7e1DekvwvoxJp8gu/NextFit?type=design&node-id=0-1&mode=design&t=hd8P5ZsuyJFlq9M3-0).
+For our wireframe, we utilized ???? to design the prototype pages and components for our app. 
 
 ### User Stories
 
-- As a fashion-conscious individual looking to minimize clothing expenses, I require an app that helps me manage and maximize my existing wardrobe by generating diverse outfit combinations from my current clothing pieces and accessories
+- As a fan with fandom fatigue, I require an app that will let me have a peaceful space to express myself with minimal noise from other people 
 
-- As a fashion enthusiast committed to reducing the environmental impact of fast fashion, I seek an app that tracks the frequency of clothing item usage and reminds me to donate rarely worn pieces
+- As a fan with fandom fatigue but still wants to keep up with updates on my idols, I seek an app that can help me organise the various fan content available
 
-- As a fashion-conscious individual with limited closet space, I need an app to efficiently organise my clothes and accessories, making them easily accessible and well-structured
 
-You can access our Trello board [here](https://trello.com/b/rpCIwS72/nextfit).
+You can access the Trello board [here](https://trello.com/b/JFeKxIJg/caf%C3%A9-au-lsfm).
 
 ### Pitch Deck
 
@@ -131,36 +129,6 @@ A README.md file with these sections (here's a basic template)
   - A link to the deployed app
   - A link to the Trello board used for the project's planning that includes user stories, wireframes & an ERD.
 
-## Roles
-
-### GitHub Manager (Edmund and Cristelle)
-
-- Manages the GitHub repository.
-- Approves pull requests.
-- Sets up the MERN infrastructure.
-
-### Scrum Master (Cristelle and Evangelene)
-
-- Manages user stories (on Trello).
-- Manages Trello boards (on Trello) as the board manager.
-- Optionally, manages stand-up meetings.
-
-### Documenter (Zahra and Cristelle)
-
-- Creates and maintains the project README.
-- Prepares the pitch deck (on Tome).
-
-### Designer (Evangelene and Edmund)
-
-- Creates UI wireframes (on Figma).
-- Handles CSS styling, consider the use of frameworks like Bootstrap or Tailwind CSS (can also use other styling libraries).
-
-### Database Manager (Zahra and Edmund)
-
-- Manages the database.
-- Draws schema diagrams, utilising tools like Lucidchart or DbSchema.
-- Handles relationships such as one-to-many (1-M) and many-to-many (M-M) modeling.
-- Potentially implements external APIs related to the database.
 
 ## Challenges
 
@@ -197,4 +165,3 @@ The Nextfit App is an evolving project with room for further enhancements and ex
 ## Acknowledgments
 
 - We would like to thank the open-source community for their contributions to the libraries and tools used in this project.
-- Weather data provided by [OpenWeather](https://openweathermap.org/).
