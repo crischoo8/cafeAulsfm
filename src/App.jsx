@@ -36,6 +36,7 @@ function App() {
     try {
       const allPost = await getAllPostService();
       setPost(allPost);
+      console.log(post);
     } catch (err) {
       console.error(err);
     } 
@@ -70,7 +71,7 @@ function App() {
             {loading && (
               <Routes>
                 <Route path="/home" element={<HomePage user={user} />} />
-                <Route path="/journal" element={<JournalPage />} />
+                <Route path="/journal" element={<JournalPage user={user} post={post}/>} />
                 {/* create a /journal/new route! */}
                 <Route path="/journal/new" 
                 post={post}
