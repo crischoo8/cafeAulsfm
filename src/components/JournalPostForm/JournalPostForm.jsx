@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 
 const log = debug("cafeaulsfm:src:components:JournalPostForm");
 
-export default function JournalPostForm({ post, setPost}) {
+export default function JournalPostForm({ post, setPost }) {
   // images is not in this initialPostData but it will be appended
   const initialPostData = {
     title: "",
@@ -62,7 +62,6 @@ export default function JournalPostForm({ post, setPost}) {
     log("Image uploaded");
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (imageFiles.images.length === 0) return;
@@ -79,20 +78,21 @@ export default function JournalPostForm({ post, setPost}) {
         ...postData,
         images: imgURL,
       });
-      
-      Swal.fire(swalBasicSettings("Your Post is Uploaded!", "success"));
-      setPost([...post, newPost]);
+
+      setPost((prevPost) => [...prevPost, newPost]);
+      console.log(post);
       resetPostForm();
-    
+      Swal.fire(swalBasicSettings("Your Post is Uploaded!", "success"));
+      //   setPost([...post, newPost]);
+      //   console.log(post);
+      //   resetPostForm();
     } catch (err) {
-        if (err.message === "post is not iterable") {
-            setPost([...post, newPost]);
-            resetPostForm();
-            Swal.fire({
-                ...swalBasicSettings("OK"),
-                text: "Post Created.",
-            });
-            } else if (err.message === "Unexpected end of JSON input") {
+      if (err.message === "post is not iterable") {
+        Swal.fire({
+          ...swalBasicSettings("OK"),
+          text: "Post Created.",
+        });
+      } else if (err.message === "Unexpected end of JSON input") {
         Swal.fire({
           ...swalBasicSettings("Internal Server Error", "error"),
           text: "Please try again later.",

@@ -74,14 +74,16 @@ function App() {
                 <Route path="/journal" element={<JournalPage user={user} post={post} setPost={setPost}/>} />
                 {/* create a /journal/new route! */}
                 <Route path="/journal/new" 
+                element={<JournalPostForm
                 post={post}
                 setPost={setPost}
-                element={<JournalPostForm/>} />
+                />} />
 
                 <Route path="/journal/:postID/edit" 
+                element={<PostEditForm
                 post={post}
                 setPost={setPost}
-                element={<PostEditForm/>} />
+                />} />
 
                 <Route path="/announcements" element={<AdminPage />} />
                 {/*  create a /announcements/new route */}

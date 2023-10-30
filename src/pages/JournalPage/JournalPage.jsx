@@ -10,7 +10,8 @@ import debug from "debug";
 const log = debug("cafeaulsfm:src:pages:JournalPage");
 
 export default function JournalPage({ post, setPost }) {
-  const handleDelete = async (postID, postItem) => {
+
+  const handleDelete = async (postID) => {
     const prompt = await Swal.fire({
       ...swalBasicSettings("Proceed to delete?", "warning"),
       text: "Your favourite outfit containing this apparel will also be deleted.",
@@ -47,6 +48,8 @@ export default function JournalPage({ post, setPost }) {
           index={index}
           postItem={postItem}
           handleDelete={handleDelete}
+          post={post}
+          setPost={setPost}
         />
       ))}
     </>
