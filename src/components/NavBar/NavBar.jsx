@@ -2,6 +2,11 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { logOutService } from "../../utilities/users-service";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { PiNotePencilBold, PiPlusSquareFill } from "react-icons/pi";
+import { FaBucket } from "react-icons/fa6";
+import { GiSpade } from "react-icons/gi";
+import { RxDividerVertical } from "react-icons/rx";
+
+
 
 export default function NavBar({user, setUser}) {
     const navigate = useNavigate();
@@ -15,13 +20,25 @@ export default function NavBar({user, setUser}) {
               : "text-neutral-500"
           } hover:text-white hover:text-3xl text-2xl mr-3`}
         >
-          <Link to="/journal/new" className="flex items-center justify-center">
+          <Link to="/journal/new" className="flex items-center justify-center hover:text-teal-500">
             <div
               className="tooltip tooltip-bottom flex items-center justify-center"
               data-tip="Add Journal Post"
             >
               <PiNotePencilBold/>
               <PiPlusSquareFill />
+            </div>
+          </Link>
+
+          <RxDividerVertical className="hover:text-indigo-400 hover:text-3xl text-2xl mr-3"/>
+
+          <Link to="/bucketlist/new" className="flex items-center justify-center hover:text-amber-300">
+            <div
+              className="tooltip tooltip-bottom flex items-center justify-center"
+              data-tip="Add Bucket List Item"
+            >
+              <FaBucket/>
+              <GiSpade/>
             </div>
           </Link>
         </div>
