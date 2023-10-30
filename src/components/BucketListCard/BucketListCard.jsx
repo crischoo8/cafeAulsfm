@@ -33,7 +33,7 @@ export default function BucketListCard() {
                 className="tooltip tooltip-top"
                 data-tip="Edit Bucket List Item"
               >
-                {/* <Link to={`/journal/${postItem?._id}/edit`}> */}
+                {/* <Link to={`/bucketlist/${postItem?._id}/edit`}> */}
                 <PiPencil className="text-xl mb-2 mr-[2px] text-black cursor-pointer" />
                 {/* </Link> */}
               </span>
