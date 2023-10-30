@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FaRegFaceKiss } from "react-icons/fa6";
 
 // has placeholder values for now 
-export default function JournalPostCard({postItem, index}) {
+export default function JournalPostCard({postItem, index, handleDelete}) {
     
     return(
         <>
@@ -16,13 +16,10 @@ export default function JournalPostCard({postItem, index}) {
               <PiPencil className="text-xl mb-2 mr-[2px] text-black cursor-pointer" />
             {/* </Link> */}
           </span>
-          {/* <span className="tooltip tooltip-bottom" data-tip="Add Frequency">
-            <PiPlusDuotone
-              className="text-xl mb-2 mr-[2px] text-black cursor-pointer"
-            />
-          </span> */}
+        
           <span className="tooltip tooltip-top" data-tip="Delete Post">
             <PiTrashDuotone
+            onClick={() => handleDelete(postItem._id)}
               className="text-xl mb-2 text-black cursor-pointer"
             />
           </span>

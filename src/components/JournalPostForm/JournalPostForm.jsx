@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 
 const log = debug("cafeaulsfm:src:components:JournalPostForm");
 
-export default function JournalPostForm({ post, setPost }) {
+export default function JournalPostForm({ post, setPost}) {
   // images is not in this initialJournalData but it will be appended
   const initialPostData = {
     title: "",
@@ -61,6 +61,7 @@ export default function JournalPostForm({ post, setPost }) {
     });
     log("Image uploaded");
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

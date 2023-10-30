@@ -64,7 +64,7 @@ module.exports = {
     });
   },
   deleteFromS3: async function (req, res, next) {
-    const postToDelete = await Post.findById(req.params.apparelID);
+    const postToDelete = await Post.findById(req.params.postID);
     debug("postToDelete: %o", postToDelete);
     const s3ObjectID = postToDelete.s3ObjectID;
     debug("s3ObjectID virtual:", s3ObjectID);
