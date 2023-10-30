@@ -12,6 +12,9 @@ import BucketListPage from "./pages/BucketListPage/BucketListPage";
 import NavBar from "./components/NavBar/NavBar";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import PostEditForm from "./components/JournalPostForm/PostEditForm";
+import BucketListForm from "./components/BucketListForm/BucketListForm";
+import BucketEditForm from "./components/BucketListForm/BucketEditForm";
+
 import { getUser } from "./utilities/users-service";
 import { getAllPostService } from "./utilities/posts-service";
 import { useState, useEffect } from "react";
@@ -89,7 +92,10 @@ function App() {
                 {/*  create a /announcements/new route */}
                 {/* for creating new admin posts ^^ */}
                 <Route path="/bucketlist" element={<BucketListPage />} />
-                {/* create a bucketlist/new */}
+                {/* create a bucketlist/new, BucketListForm*/}
+                <Route path="/bucketlist/new" element={<BucketListForm />} />
+                {/* Route to BucketEditForm */}
+                <Route path="/bucketlist/:bucketItemID/edit" element={<BucketEditForm />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             )}
