@@ -6,8 +6,8 @@ export default function BucketListPage() {
     return (
         <>
         <h1>hello! your Bucket List is here!</h1>
-        {/* conditional rendering based on length of posts */}
-        {bucket.length ==0 && <BucketListHero/>}
+        {/* conditional rendering based on length of bucket/BucketList */}
+        {/* {bucket.length ==0 && <BucketListHero/>}
         
         {bucket.length !==0 && bucket.map((bucketItem, index) => (
             <BucketListCard
@@ -18,7 +18,7 @@ export default function BucketListPage() {
             bucket={bucket}
             setBucket={setBucket}
             />
-        ))}
+        ))} */}
         <BucketListCard/>        
         </>
     );
