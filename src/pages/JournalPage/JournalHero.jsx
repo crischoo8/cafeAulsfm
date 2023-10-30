@@ -7,11 +7,11 @@ export default function JournalHero() {
       <div className="hero-content text-center">
         <div className="max-w-lg">
           <h1 className="text-5xl font-bold mb-8">
-            Start Posting Today!
+          Ⴚტ◕‿◕ტჂ
           </h1>
           <Link to="/journal/new">
             <button className="btn btn-ghost text-white text-2xl bg-[#7ba6de] hover:bg-[#0d1c27] rounded-md normal-case">
-              Click to Start Writing Ⴚტ◕‿◕ტჂ
+              Click to Start Writing !
             </button>
           </Link>
         </div>
