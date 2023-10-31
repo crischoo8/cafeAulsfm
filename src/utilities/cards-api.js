@@ -10,10 +10,10 @@ export function getAllCardAPI() {
   return sendRequest(BASE_URL);
 }
 
-export function deleteCardAPI(cardID) {
-  return sendRequest(`${BASE_URL}/${cardID}`, "DELETE");
+export function deleteCardAPI(bucketlistItemID) {
+  return sendRequest(`${BASE_URL}/${bucketlistItemID}`, "DELETE");
 }
 
-export function updateCardAPI(cardID, cardData) {
-  return sendRequest(`${BASE_URL}/${cardID}/edit`, "PUT", cardData);
+export function updateCardAPI(bucketlistItemID, cardData) {
+  return sendRequest(`${BASE_URL}/${bucketlistItemID}/edit`, "PUT", cardData);
 }

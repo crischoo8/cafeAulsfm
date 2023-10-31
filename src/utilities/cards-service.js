@@ -5,8 +5,8 @@ import {
     updateCardAPI,
   } from "./cards-api";
 
-  export async function addCardService(postData) {
-    const cardItem = await addCardAPI(postData);
+  export async function addCardService(cardData) {
+    const cardItem = await addCardAPI(cardData);
     return cardItem.data.card;
   }
   
@@ -15,13 +15,13 @@ import {
     return allCard.data.card;
   }
   
-  export async function deleteCardService(cardID) {
-    await deleteCardAPI(cardID);
+  export async function deleteCardService(bucketlistItemID) {
+    await deleteCardAPI(bucketlistItemID);
   }
   
   
-  export async function updateCardService(cardID, cardData) {
-    const result = await updateCardAPI(cardID, cardData);
+  export async function updateCardService(bucketlistItemID, cardData) {
+    const result = await updateCardAPI(bucketlistItemID, cardData);
     return result.data.card;
   }
   
