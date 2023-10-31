@@ -7,9 +7,7 @@ import {
 } from "../../utilities/cards-service";
 import Swal from "sweetalert2";
 
-export default function BucketListForm() {
-    // following line is a placeholder
-    const [bucket, setBucket] = useState([]);
+export default function BucketListForm({bucket, setBucket}) {
 
     const initialBucketData = {
         title: "",
@@ -23,7 +21,7 @@ export default function BucketListForm() {
       const [status, setStatus] = useState(null);
     
       const resetBucketForm = () => {
-        setBucketData(initialPostBucket);
+        setBucketData(initialBucketData);
         setStatus(null);
       };
     
@@ -38,6 +36,7 @@ export default function BucketListForm() {
       const handleSubmit = async (e) => {
         e.preventDefault();
         
+        // need to spread the bucketData....if not payload wont work LOL
         try {
           const newBucket = await addCardService({
             ...bucketData
@@ -81,6 +80,7 @@ export default function BucketListForm() {
             autoComplete="off"
             encType="multipart/form-data"
           >
+            {/* {JSON.stringify(bucketData)} */}
             <header className="text-black font-inter font-light text-2xl text-center my-4">
               Add to Bucket List!
             </header>

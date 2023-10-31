@@ -2,11 +2,10 @@ const Card = require("../models/cardModel");
 const debug = require("debug")("cafeaulsfm:controllers:cardsCtrl");
 const sendResponse = require("../config/sendResponseHelper");
 
-
 async function create(req, res) {
   debug("req.body: %o", req.body);
   const { title, description, url } = req.body;
-  const postInfo = { title, description, url };
+  const cardInfo = { title, description, url };
   try {
     const newCard = await Card.create({
       ...cardInfo,
@@ -29,7 +28,6 @@ async function create(req, res) {
     sendResponse(res, 500, null, "Error saving post");
   }
 }
-
 
 async function getAll(req, res) {
   debug("see req.user: %o", req.user);

@@ -111,7 +111,7 @@ function App() {
                 {/* create a bucketlist/new, BucketListForm*/}
                 <Route path="/bucketlist/new" element={<BucketListForm bucket={bucket} setBucket={setBucket}/>} />
                 {/* Route to BucketEditForm */}
-                <Route path="/bucketlist/:bucketItemID/edit" element={<BucketEditForm bucket={bucket} setBucket={setBucket}/>} />
+                <Route path="/bucketlist/:bucketlistItemID/edit" element={<BucketEditForm bucket={bucket} setBucket={setBucket}/>} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             )}
