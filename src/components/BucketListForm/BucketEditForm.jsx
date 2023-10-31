@@ -22,7 +22,7 @@ export default function BucketEditForm({ bucket, setBucket }) {
   const [status, setStatus] = useState(null);
 
   const resetBucketForm = () => {
-    setBucketData(initialPostBucket);
+    setBucketData(initialBucketData);
     setStatus(null);
   };
 
@@ -37,7 +37,7 @@ export default function BucketEditForm({ bucket, setBucket }) {
     e.preventDefault();
 
     try {
-      const newBucket = await updateCardService({
+      const newBucket = await updateCardService(bucketlistItemID, {
         ...bucketData,
       });
 
