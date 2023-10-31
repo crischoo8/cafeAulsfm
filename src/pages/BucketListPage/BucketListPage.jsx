@@ -37,6 +37,7 @@ export default function BucketListPage({bucket, setBucket}) {
         {/* conditional rendering based on length of bucket/BucketList */}
         {bucket.length ==0 && <BucketListHero/>}
         
+        <div className="grid grid-cols-3 gap-4">
         {bucket.length !==0 && bucket.map((bucketItem, index) => (
             <BucketListCard
             key={bucketItem._id}
@@ -47,7 +48,7 @@ export default function BucketListPage({bucket, setBucket}) {
             setBucket={setBucket}
             />
         ))}
-        {/* <BucketListCard/>         */}
+        </div>
         </>
     );
 }
