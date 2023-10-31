@@ -10,7 +10,6 @@ import debug from "debug";
 const log = debug("cafeaulsfm:src:pages:JournalPage");
 
 export default function JournalPage({ post, setPost }) {
-
   const handleDelete = async (postID) => {
     const prompt = await Swal.fire({
       ...swalBasicSettings("Proceed to delete?", "warning"),
@@ -42,18 +41,21 @@ export default function JournalPage({ post, setPost }) {
       <h1>hello! your Journal is here!</h1>
       {/* {JSON.stringify(post.length)} */}
       {/* conditional rendering based on length of posts */}
-      {post.length ==0 && <JournalHero/>}
+      {post.length == 0 && <JournalHero />}
 
-      {post.length !==0 && post.map((postItem, index) => (
-        <JournalPostCard
-          key={postItem._id}
-          index={index}
-          postItem={postItem}
-          handleDelete={handleDelete}
-          post={post}
-          setPost={setPost}
-        />
-      ))}
+      <div className="grid grid-cols-3 gap-4">
+        {post.length !== 0 &&
+          post.map((postItem, index) => (
+            <JournalPostCard
+              key={postItem._id}
+              index={index}
+              postItem={postItem}
+              handleDelete={handleDelete}
+              post={post}
+              setPost={setPost}
+            />
+          ))}
+      </div>
     </>
   );
 }
