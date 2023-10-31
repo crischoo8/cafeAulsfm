@@ -78,7 +78,7 @@ export default function BucketEditForm({ bucket, setBucket }) {
         encType="multipart/form-data"
       >
         <header className="text-black font-inter font-light text-2xl text-center my-4">
-          Add to Bucket List!
+          Edit Bucket List Item
         </header>
         <div className="flex mb-6">
           <div className="w-1/2 pr-2 relative">
@@ -94,6 +94,7 @@ export default function BucketEditForm({ bucket, setBucket }) {
               value={bucketData.title}
               onChange={handleChange}
               required
+              maxLength={20}
               className="bg-neutral-300 text-gray-900 text-sm focus:ring-zinc-500 block w-full p-2.5 cursor-pointer font-inter font-extralight"
             ></input>
           </div>
@@ -111,6 +112,7 @@ export default function BucketEditForm({ bucket, setBucket }) {
               onChange={handleChange}
               disabled={!bucketData.title}
               required
+              maxLength={20}
               className="bg-neutral-300 text-gray-900 text-sm focus:ring-zinc-500 block w-full p-2.5 cursor-pointer font-inter font-extralight disabled:cursor-default"
             ></input>
           </div>
@@ -148,7 +150,7 @@ export default function BucketEditForm({ bucket, setBucket }) {
               SUBMIT
             </button>
             <Link
-              to="/journal"
+              to="/bucketlist"
               className="text-white bg-black hover:bg-slate-900 focus:ring-2 focus:outline-none focus:ring-gray-400 font-bebas font-normal text-3xl px-3 py-2.5 text-center w-full"
             >
               CANCEL

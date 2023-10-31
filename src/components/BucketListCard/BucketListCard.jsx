@@ -15,17 +15,17 @@ import {
 import { GiSandCastle, GiCoffeeMug } from "react-icons/gi";
 import { BiCheckbox, BiSolidCircle } from "react-icons/bi";
 
-export default function BucketListCard() {
+export default function BucketListCard({bucketItem}) {
   return (
     <>
       <article>
-        <div className="bg-gray-200 p-3 m-1 h-[100%] rounded-lg shadow md:flex-row md:max-w-xl">
+        <div className="bg-gray-200 p-3 m-1 h-55 w-60 rounded-lg shadow md:flex-row md:max-w-xl">
           <span className="flex items-center justify-between">
             {/* title */}
             <span>
               <i className="text-zinc-600 text-2xl">
-                rizz cat dingus
-                {/* {postItem?.title} */}
+                {/* rizz cat dingus */}
+                {bucketItem?.title}
               </i>
             </span>
             <span>
@@ -33,9 +33,9 @@ export default function BucketListCard() {
                 className="tooltip tooltip-top"
                 data-tip="Edit Bucket List Item"
               >
-                {/* <Link to={`/bucketlist/${postItem?._id}/edit`}> */}
+                <Link to={`/bucketlist/${bucketItem?._id}/edit`}>
                 <PiPencil className="text-xl mb-2 mr-[2px] text-black cursor-pointer" />
-                {/* </Link> */}
+                </Link>
               </span>
 
               <span
@@ -55,26 +55,21 @@ export default function BucketListCard() {
             {/* description, could be like a reminder for airing dates */}
             <p className="flex items-center space-x-0 text-zinc-600">
               <BiSolidCircle/>
-              handsomest boi!
-              {/* {postItem?.description} */}
+              {/* handsomest boi! */}
+              {bucketItem?.description}
             </p>
             {/* URL / Link */}
             <p className="flex items-center space-x-0 text-zinc-600 hover:text-indigo-400">
               <BiSolidCircle/>
               <a
-                href="https://www.tiktok.com/@fish___gang/video/7282884444090895658"
-                //   href={postItem?.url}
+                // href="https://www.tiktok.com/@fish___gang/video/7282884444090895658"
+                  href={bucketItem?.url}
                 target="blank"
               >
                 <PiLinkSimpleBold />
               </a>
             </p>
-            {/* tags */}
-            <p className="flex items-center space-x-0 text-zinc-600  hover:text-indigo-400">
-              <BiSolidCircle/>
-              #dingus #dingusMyIdol
-              {/* # {postItem?.tag} */}
-            </p>
+          
 
           </div>
           <div className="flex items-center space-x-0 text-zinc-600">
