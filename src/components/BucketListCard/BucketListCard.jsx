@@ -13,9 +13,10 @@ import {
   PiTelevisionBold,
 } from "react-icons/pi";
 import { GiSandCastle, GiCoffeeMug } from "react-icons/gi";
-import { BiCheckbox, BiSolidCircle } from "react-icons/bi";
+import { BiSolidCircle } from "react-icons/bi";
+import Swal from "sweetalert2";
 
-export default function BucketListCard({bucketItem}) {
+export default function BucketListCard({bucketItem, handleDelete}) {
   return (
     <>
       <article>
@@ -44,7 +45,7 @@ export default function BucketListCard({bucketItem}) {
               >
                 {/* change this icon */}
                 <PiTrashDuotone
-                  // onClick={() => handleDelete(postItem?._id)}
+                  onClick={() => handleDelete(bucketItem?._id)}
                   className="text-xl mb-2 text-black cursor-pointer"
                 />
               </span>

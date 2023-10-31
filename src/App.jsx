@@ -41,7 +41,7 @@ function App() {
     try {
       const allPost = await getAllPostService();
       setPost(allPost);
-      console.log(post);
+      // console.log(post);
     } catch (err) {
       console.error(err);
     } 
@@ -54,7 +54,7 @@ function App() {
     try {
       const allCard = await getAllCardService();
       setBucket(allCard);
-      console.log(bucket);
+      // console.log(bucket);
     } catch (err) {
       console.error(err);
     } 

@@ -14,7 +14,7 @@ export default function JournalPage({ post, setPost }) {
   const handleDelete = async (postID) => {
     const prompt = await Swal.fire({
       ...swalBasicSettings("Proceed to delete?", "warning"),
-      text: "Your favourite outfit containing this apparel will also be deleted.",
+      text: "Your journal post will be deleted.",
       showCancelButton: true,
       confirmButtonText: "DELETE",
       cancelButtonText: "CANCEL",
@@ -43,7 +43,7 @@ export default function JournalPage({ post, setPost }) {
       {/* {JSON.stringify(post.length)} */}
       {/* conditional rendering based on length of posts */}
       {post.length ==0 && <JournalHero/>}
-      
+
       {post.length !==0 && post.map((postItem, index) => (
         <JournalPostCard
           key={postItem._id}
