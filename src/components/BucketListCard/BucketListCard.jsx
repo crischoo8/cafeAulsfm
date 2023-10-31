@@ -14,17 +14,25 @@ import {
 } from "react-icons/pi";
 import { GiSandCastle, GiCoffeeMug } from "react-icons/gi";
 import { BiSolidCircle } from "react-icons/bi";
-import Swal from "sweetalert2";
+import { ImCross, ImCheckboxUnchecked, ImCheckboxChecked} from "react-icons/im";
+import { useState } from "react";
 
 export default function BucketListCard({bucketItem, handleDelete}) {
-  return (
+    // similar to visibility code (?)
+    const [clicked, setClicked] = useState(false);
+    const icon = clicked ? <ImCheckboxChecked /> : <ImCheckboxUnchecked />;
+    const bg = clicked ? 'bg-emerald-300 p-3 m-1 h-55 w-60 rounded-lg shadow md:flex-row md:max-w-xl' : 'bg-gray-200 p-3 m-1 h-55 w-60 rounded-lg shadow md:flex-row md:max-w-xl';
+    return (
     <>
-      <article>
-        <div className="bg-gray-200 p-3 m-1 h-55 w-60 rounded-lg shadow md:flex-row md:max-w-xl">
+      <article
+         onClick={() => {
+            setClicked(!clicked);}}
+      >
+        <div className={bg}>
           <span className="flex items-center justify-between">
             {/* title */}
             <span>
-              <i className="text-zinc-600 text-2xl">
+              <i className="text-indigo-500 text-2xl">
                 {/* rizz cat dingus */}
                 {bucketItem?.title}
               </i>
@@ -44,7 +52,7 @@ export default function BucketListCard({bucketItem, handleDelete}) {
                 data-tip="Dump Bucket List Item"
               >
                 {/* change this icon */}
-                <PiTrashDuotone
+                <ImCross
                   onClick={() => handleDelete(bucketItem?._id)}
                   className="text-xl mb-2 text-black cursor-pointer"
                 />
@@ -71,16 +79,12 @@ export default function BucketListCard({bucketItem, handleDelete}) {
               </a>
             </p>
           
-
           </div>
-          <div className="flex items-center space-x-0 text-zinc-600">
-                <PiTelevisionBold />
-                <GiCoffeeMug />
-                <PiSunHorizonBold />
-                <PiSunglassesBold />
-                <FaBucket />
-                <GiSandCastle />
+
+          <div className="flex justify-end text-indigo-600">
+                {icon}
             </div>
+           
         </div>
       </article>
     </>
