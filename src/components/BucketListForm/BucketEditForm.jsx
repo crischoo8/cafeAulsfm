@@ -42,8 +42,11 @@ export default function BucketEditForm({ bucket, setBucket }) {
       });
 
       setBucket((prevBucket) => [...prevBucket, newBucket]);
-      console.log(bucket);
+    //   console.log(bucket);
       resetBucketForm();
+      console.log("Before navigation");
+      await navigate("/bucketlist");
+      console.log("After navigation");
       Swal.fire(swalBasicSettings("Your Bucket is Updated!", "success"));
     } catch (err) {
       if (err.message === "bucket is not iterable") {

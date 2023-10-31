@@ -8,7 +8,7 @@ import {
 import Swal from "sweetalert2";
 
 export default function BucketListForm({bucket, setBucket}) {
-
+    const navigate = useNavigate();
     const initialBucketData = {
         title: "",
         description: "",
@@ -43,8 +43,13 @@ export default function BucketListForm({bucket, setBucket}) {
           });
     
           setBucket((prevBucket) => [...prevBucket, newBucket]);
-          console.log(bucket);
+        //   console.log(bucket);
           resetBucketForm();
+
+          console.log("Before navigation");
+          await navigate("/bucketlist");
+          console.log("After navigation");
+          
           Swal.fire(swalBasicSettings("Your Bucket is Updated!", "success"));
           
         } catch (err) {

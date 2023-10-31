@@ -13,6 +13,8 @@ import Swal from "sweetalert2";
 const log = debug("cafeaulsfm:src:components:JournalPostForm");
 
 export default function JournalPostForm({ post, setPost }) {
+
+  const navigate = useNavigate();
   // images is not in this initialPostData but it will be appended
   const initialPostData = {
     title: "",
@@ -82,6 +84,9 @@ export default function JournalPostForm({ post, setPost }) {
       setPost((prevPost) => [...prevPost, newPost]);
       console.log(post);
       resetPostForm();
+      console.log("Before navigation");
+      await navigate("/journal");
+      console.log("After navigation");
       Swal.fire(swalBasicSettings("Your Post is Uploaded!", "success"));
       //   setPost([...post, newPost]);
       //   console.log(post);
