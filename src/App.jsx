@@ -17,6 +17,7 @@ import BucketEditForm from "./components/BucketListForm/BucketEditForm";
 
 import { getUser } from "./utilities/users-service";
 import { getAllPostService } from "./utilities/posts-service";
+import { getAllCardService } from "./utilities/cards-service";
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -31,6 +32,7 @@ log("Start React");
 function App() {
   const [user, setUser] = useState(getUser());
   const [post, setPost] = useState([]);
+  const [bucket, setBucket] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
@@ -48,15 +50,29 @@ function App() {
     // }
   };
 
-
+  const fetchCardData = async () => {
+    try {
+      const allCard = await getAllCardService();
+      setBucket(allCard);
+      console.log(bucket);
+    } catch (err) {
+      console.error(err);
+    } 
+    // finally {
+    //   setLoading(false);
+    // }
+  };
   useEffect(() => {
     if (user) {
       fetchPostData();
+      fetchCardData();
       if (location.pathname === "/") {
         navigate("/home");
       }
     }
   }, [user, navigate, location]);
+
+ 
 
   return (
     <>
@@ -91,11 +107,11 @@ function App() {
                 <Route path="/announcements" element={<AdminPage />} />
                 {/*  create a /announcements/new route */}
                 {/* for creating new admin posts ^^ */}
-                <Route path="/bucketlist" element={<BucketListPage />} />
+                <Route path="/bucketlist" element={<BucketListPage bucket={bucket} setBucket={setBucket}/>} />
                 {/* create a bucketlist/new, BucketListForm*/}
-                <Route path="/bucketlist/new" element={<BucketListForm />} />
+                <Route path="/bucketlist/new" element={<BucketListForm bucket={bucket} setBucket={setBucket}/>} />
                 {/* Route to BucketEditForm */}
-                <Route path="/bucketlist/:bucketItemID/edit" element={<BucketEditForm />} />
+                <Route path="/bucketlist/:bucketItemID/edit" element={<BucketEditForm bucket={bucket} setBucket={setBucket}/>} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             )}

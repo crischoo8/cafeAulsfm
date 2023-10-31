@@ -8,7 +8,7 @@ import {
 import Swal from "sweetalert2";
 
 export default function BucketEditForm() {
-    const { bucketItemID } = useParams();
+    const { bucketlistItemID } = useParams();
     const navigate = useNavigate();
 
     const [bucket, setBucket] = useState([]);
