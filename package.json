@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "start": "node server.js",
     "dev": "vite",
     "dev:express": "DEBUG=cafeaulsfm:* node --watch server.js",
     "build": "vite build",
