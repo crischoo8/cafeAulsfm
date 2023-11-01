@@ -1,4 +1,6 @@
 const User = require("../models/userModel");
+const Post = require("../models/postModel");
+const Card = require("../models/cardModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const sendResponse = require("../config/sendResponseHelper");
@@ -62,6 +64,24 @@ async function login(req, res) {
     }
   }
 
+    async function deactivate(req, res) {
+        debug("delete user: %o", req.user._id);
+        try {
+        await User.findOneAndDelete({
+            _id: req.user._id,
+        });
+        await Post.deleteMany({
+            user: req.user._id,
+        });
+        await Card.deleteMany({
+            user: req.user._id,
+        });
+        sendResponse(res, 200);
+        } catch (err) {
+        sendResponse(res, 500, null, "Error deleting account");
+        }
+    }
+  
 
 
 /*-- Helper Functions --*/
@@ -76,4 +96,4 @@ function createJWT(user) {
   }
 
 
-  module.exports = { create, login };
+  module.exports = { create, login, deactivate };

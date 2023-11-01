@@ -126,6 +126,26 @@ async function updateOne(req, res) {
 
 module.exports = { uploadImg, create, getAll, del, updateOne, getPostsByAdmins };
 
+// async function getPostsByAdmins(req, res) {
+//     try {
+//       const adminUsers = await User.find({ admin: true });
+  
+//       // extract user IDs from admins
+//       const adminUserIds = adminUsers.map(user => user._id);
+  
+//       // Find posts where the user field matches admin user IDs
+//       const posts = await Post.find({ user: { $in: adminUserIds } });
+  
+//       debug('Posts by admin users: %o', posts);
+  
+//       // Send the posts as a response to the client
+//       res.status(200).json({ posts });
+//     } catch (err) {
+//       console.log(err);
+//       res.status(500).json({ error: 'Error getting posts by admin users' });
+//     }
+//   }
+
 // this chunk is from NextFit and deletes related outfits that have a particular piece in it
 // will return null if cannot findOne
 // const category = req.params.main;

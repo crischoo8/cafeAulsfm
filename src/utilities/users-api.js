@@ -10,3 +10,7 @@ export function signUpAPI(userData) {
     return sendRequest(`${BASE_URL}/login`, "POST", credentials);
   }
   
+  export async function deleteUserAPI() {
+    return sendRequest(BASE_URL, "DELETE");
+  }
+  

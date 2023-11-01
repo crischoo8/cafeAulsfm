@@ -1,10 +1,15 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { logOutService } from "../../utilities/users-service";
+import 
+{ logOutService,
+  deleteUserService
+ } from "../../utilities/users-service";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { PiNotePencilBold, PiPlusSquareFill } from "react-icons/pi";
 import { FaBucket } from "react-icons/fa6";
 import { GiSpade } from "react-icons/gi";
 import { RxDividerVertical } from "react-icons/rx";
+import Swal from "sweetalert2";
+import { swalBasicSettings } from "../../utilities/posts-service";
 
 
 
@@ -57,6 +62,49 @@ export default function NavBar({user, setUser}) {
     setUser(null);
     navigate("/");
     };
+
+    const handleDeactivate = async (e) => {
+        e.preventDefault();
+    
+        const prompt = await Swal.fire({
+          ...swalBasicSettings("Proceed to delete account?", "warning"),
+          text: "Deleting your account cannot be undone. All data and progress will be lost. Make sure you want to do this.",
+          input: "text",
+          inputPlaceholder: "type your username",
+          inputAttributes: { autocomplete: "off" },
+          showCancelButton: true,
+          confirmButtonText: "DELETE",
+          cancelButtonText: "CANCEL",
+        }).then((result) => {
+          if (result.value) {
+            return result.value;
+          }
+        });
+    
+        if (prompt === user.username) {
+          try {
+            Swal.fire(
+              swalBasicSettings("Successfully deleted account!", "success")
+            );
+            await deleteUserService();
+            setUser(null);
+            navigate("/");
+          } catch (err) {
+            console.error(err);
+            Swal.fire({
+              ...swalBasicSettings("Error", "error"),
+              text: "Something went wrong",
+            });
+          }
+        } else {
+          Swal.fire(
+            swalBasicSettings(
+              "You did not type your username. Account not deleted.",
+              "warning"
+            )
+          );
+        }
+      };
 
     return (
         <nav>
@@ -120,7 +168,7 @@ export default function NavBar({user, setUser}) {
                 </Link>
               </li>
               <li className="border-t border-white">
-                <Link to="/" className="text-lg">
+                <Link to="/" onClick={handleDeactivate} className="text-lg">
                   Deactivate Account
                 </Link>
               </li>
