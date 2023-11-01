@@ -8,16 +8,21 @@ import Swal from "sweetalert2";
 import debug from "debug";
 import { useState } from "react";
 
+
 const log = debug("cafeaulsfm:src:pages:AdminPage");
 
 export default function AdminPage({adminPost}) {
     
       return (
         <>
-          <h1>hello! the Admin Page is here!</h1>
-          {JSON.stringify(adminPost?.length)}
+        <div className="h-screen flex flex-col justify-center items-center">
+
+          <i className="text-3xl font-bold mb-4"> Official Announcements</i>
           {/* conditional rendering based on length of posts */}
+
           {adminPost?.length === 0 && <JournalHero/>}
+
+        <div className="grid grid-cols-3 gap-4">
           {adminPost?.length !==0 && adminPost?.map((postItem, index) => (
             <AdminPostCard
               key={postItem._id}
@@ -25,6 +30,9 @@ export default function AdminPage({adminPost}) {
               postItem={postItem}
             />
           ))}
+        </div>
+
+        </div>
         </>
       );
     }
