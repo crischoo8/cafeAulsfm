@@ -1,3 +1,4 @@
+const User = require("../models/userModel");
 const Post = require("../models/postModel");
 const debug = require("debug")("cafeaulsfm:controllers:postsCtrl");
 const sendResponse = require("../config/sendResponseHelper");
@@ -44,7 +45,7 @@ async function create(req, res) {
   }
 }
 
-// i think i need a getAll function just for admin posts (whoever the duck the admin is)
+
 async function getAll(req, res) {
   debug("see req.user: %o", req.user);
   try {
@@ -71,7 +72,7 @@ async function del(req, res) {
   }
 }
 
-// holy fuck cristelle, pls edit this
+
 
 async function updateOne(req, res) {
   debug("see req.user: %o", req.user);
@@ -107,7 +108,23 @@ async function updateOne(req, res) {
   }
 }
 
-module.exports = { uploadImg, create, getAll, del, updateOne };
+// i think i need a getAll function just for admin posts (whoever the duck the admin is)
+    async function getPostsByAdmins(req, res) {
+        // fetches from a single admin account
+        const targetUserId = "653b844352a56dacfd5655ab"; 
+    debug("Fetching posts for user with ID: %s", targetUserId);
+    
+    try {
+        const posts = await Post.findById({ _id: targetUserId });
+        debug("Found posts by user: %o", posts);
+        sendResponse(res, 200, { posts });
+    } catch (err) {
+        sendResponse(res, 500, null, "Error getting posts for the user");
+    }
+    }
+  
+
+module.exports = { uploadImg, create, getAll, del, updateOne, getPostsByAdmins };
 
 // this chunk is from NextFit and deletes related outfits that have a particular piece in it
 // will return null if cannot findOne

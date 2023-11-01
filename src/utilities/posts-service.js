@@ -4,6 +4,7 @@ import {
     getAllPostAPI,
     deletePostAPI,
     updatePostAPI,
+    getAdminsPostAPI,
   } from "./posts-api";
   
   export async function uploadToS3Service(imgFormData) {
@@ -34,7 +35,10 @@ import {
     return result.data.post;
   }
   
-  
+  export async function getAdminsPostService() {
+    const allPost = await getAdminsPostAPI();
+    return allPost.data.post;
+  }
   
   export function swalBasicSettings(title, icon) {
     const settings = {

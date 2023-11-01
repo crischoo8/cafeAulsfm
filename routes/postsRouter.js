@@ -8,6 +8,6 @@ router.post("/new/upload", uploadToS3, postCtrl.uploadImg);
 router.post("/new", postCtrl.create);
 router.delete("/:postID", deleteFromS3, postCtrl.del);
 router.put("/:postID/edit", postCtrl.updateOne);
-
+router.get("/admins", postCtrl.getPostsByAdmins);
 
 module.exports = router;

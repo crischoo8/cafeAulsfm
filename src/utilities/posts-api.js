@@ -21,3 +21,7 @@ export function deletePostAPI(postID) {
 export function updatePostAPI(postID, postData) {
   return sendRequest(`${BASE_URL}/${postID}/edit`, "PUT", postData);
 }
+
+export function getAdminsPostAPI() {
+    return sendRequest(`${BASE_URL}/admins`);
+  }

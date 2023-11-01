@@ -16,7 +16,7 @@ import BucketListForm from "./components/BucketListForm/BucketListForm";
 import BucketEditForm from "./components/BucketListForm/BucketEditForm";
 
 import { getUser } from "./utilities/users-service";
-import { getAllPostService } from "./utilities/posts-service";
+import { getAllPostService, getAdminsPostService } from "./utilities/posts-service";
 import { getAllCardService } from "./utilities/cards-service";
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
@@ -32,6 +32,7 @@ log("Start React");
 function App() {
   const [user, setUser] = useState(getUser());
   const [post, setPost] = useState([]);
+  const [adminPost, setAdminPost] = useState([]);
   const [bucket, setBucket] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -58,14 +59,23 @@ function App() {
     } catch (err) {
       console.error(err);
     } 
-    // finally {
-    //   setLoading(false);
-    // }
   };
+
+  const fetchAdminPostData = async () => {
+    try {
+      const allAdminPost= await getAdminsPostService();
+      setAdminPost(allAdminPost);
+      // console.log(post);
+    } catch (err) {
+      console.error(err);
+    } 
+  };
+
   useEffect(() => {
     if (user) {
       fetchPostData();
       fetchCardData();
+      fetchAdminPostData();
       if (location.pathname === "/") {
         navigate("/home");
       }
@@ -104,8 +114,8 @@ function App() {
                 setPost={setPost}
                 />} />
 
-                <Route path="/announcements" element={<AdminPage />} />
-                {/*  create a /announcements/new route */}
+                <Route path="/announcements" element={<AdminPage adminPost={adminPost} setAdminPost={setAdminPost}/>} />
+                {/*  create a /announcements/new route => do i rly need this??? */}
                 {/* for creating new admin posts ^^ */}
                 <Route path="/bucketlist" element={<BucketListPage bucket={bucket} setBucket={setBucket}/>} />
                 {/* create a bucketlist/new, BucketListForm*/}
