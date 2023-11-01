@@ -42,7 +42,7 @@ function App() {
     try {
       const allPost = await getAllPostService();
       setPost(allPost);
-      // console.log(post);
+      console.log(post);
     } catch (err) {
       console.error(err);
     } 
@@ -65,7 +65,7 @@ function App() {
     try {
       const allAdminPost= await getAdminsPostService();
       setAdminPost(allAdminPost);
-      // console.log(post);
+      console.log(allAdminPost?.[0]);
     } catch (err) {
       console.error(err);
     } 

@@ -111,12 +111,12 @@ async function updateOne(req, res) {
 // i think i need a getAll function just for admin posts (whoever the duck the admin is)
     async function getPostsByAdmins(req, res) {
         // fetches from a single admin account
-        const targetUserId = "653b844352a56dacfd5655ab"; 
-    debug("Fetching posts for user with ID: %s", targetUserId);
+        const targetUser = '653b844352a56dacfd5655ab'; 
+        debug("Fetching posts for user with ID: %s", targetUser);
     
     try {
-        const posts = await Post.findById({ _id: targetUserId });
-        debug("Found posts by user: %o", posts);
+        const posts = await Post.find({ user: '653b844352a56dacfd5655ab'});
+        debug("Found posts by admin: %o", posts);
         sendResponse(res, 200, { posts });
     } catch (err) {
         sendResponse(res, 500, null, "Error getting posts for the user");

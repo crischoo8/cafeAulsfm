@@ -37,7 +37,7 @@ import {
   
   export async function getAdminsPostService() {
     const allPost = await getAdminsPostAPI();
-    return allPost.data.post;
+    return allPost.data.posts;
   }
   
   export function swalBasicSettings(title, icon) {
