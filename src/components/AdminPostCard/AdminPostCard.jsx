@@ -5,9 +5,17 @@ import {
     PiTrashDuotone,
   } from "react-icons/pi";
   import { Link } from "react-router-dom";
-  
+  import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+  import { useState } from "react";
+
   export default function AdminPostCard({postItem}) {
+    const [color, setColor] = useState(false);
+    const icon = color ? <AiFillHeart/> : <AiOutlineHeart/>
+    const handleFillHeart = function() {
+
+    }
     return (
+      
       <>
         <article>
           <div className="bg-gray-200 p-3 w-full m-1 h-[100%] rounded-lg shadow md:flex-row md:max-w-xl">
@@ -44,8 +52,11 @@ import {
                 {/* #dingus #dingusMyIdol */}# {postItem?.tag}
               </p>
   
-              <p className="text-zinc-600">
-                <PiCoffeeDuotone />
+              <p className="flex justify-end text-indigo-600 text-3xl" 
+              onClick={() => {
+                setColor(!color);
+                }} >
+                {icon}
               </p>
             </div>
           </div>
