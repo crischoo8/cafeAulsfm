@@ -4,7 +4,7 @@ import { deleteCardService, swalBasicSettings } from "../../utilities/cards-serv
 import { useState } from "react";
 import Swal from "sweetalert2";
 
-export default function BucketListPage({bucket, setBucket}) {
+export default function BucketListPage({user, bucket, setBucket}) {
 
     const handleDelete = async (bucketlistItemID) => {
         const prompt = await Swal.fire({
@@ -33,7 +33,10 @@ export default function BucketListPage({bucket, setBucket}) {
       };
     return (
         <>
-        <h1>hello! your Bucket List is here!</h1>
+        <div className="flex flex-col justify-center items-center mb-4">
+      <i className="text-3xl font-bold mb-4">{user.username}'s Bucket List ٩(◕‿◕)۶</i>
+    </div>
+
         {/* conditional rendering based on length of bucket/BucketList */}
         {bucket.length ==0 && <BucketListHero/>}
         

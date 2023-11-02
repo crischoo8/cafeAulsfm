@@ -9,7 +9,7 @@ import debug from "debug";
 
 const log = debug("cafeaulsfm:src:pages:JournalPage");
 
-export default function JournalPage({ post, setPost }) {
+export default function JournalPage({ user, post, setPost }) {
   const handleDelete = async (postID) => {
     const prompt = await Swal.fire({
       ...swalBasicSettings("Proceed to delete?", "warning"),
@@ -38,9 +38,10 @@ export default function JournalPage({ post, setPost }) {
 
   return (
     <>
-      <h1>hello! your Journal is here!</h1>
-      {/* {JSON.stringify(post.length)} */}
-      {/* conditional rendering based on length of posts */}
+    <div className="flex flex-col justify-center items-center mb-4">
+      <i className="text-3xl font-bold mb-4">Welcome Home {user.username}! Ⴚტ◕‿◕ტჂ</i>
+    </div>
+
       {post.length == 0 && <JournalHero />}
 
       <div className="grid grid-cols-3 gap-4">
