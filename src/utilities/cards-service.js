@@ -3,7 +3,6 @@ import {
     getAllCardAPI,
     deleteCardAPI,
     updateCardAPI,
-    createCardFromPostAPI,
   } from "./cards-api";
 
   export async function addCardService(cardData) {

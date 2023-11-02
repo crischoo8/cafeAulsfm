@@ -7,7 +7,7 @@ import {
   import { Link, useNavigate } from "react-router-dom";
   import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
   import { useState } from "react";
-  import { createCardFromPostService, addCardService,swalBasicSettings } from "../../utilities/cards-service";
+  import { addCardService,swalBasicSettings } from "../../utilities/cards-service";
   import Swal from "sweetalert2";
 
   export default function AdminPostCard({postItem, bucket, setBucket}) {
@@ -31,7 +31,9 @@ import {
     
           setBucket((prevBucket) => [...prevBucket, newBucket]);
         //   console.log(bucket);
-          setColor(!color);
+          console.log('Before toggle: ', color);
+          await setColor(!color);
+          console.log('After toggle: ', color);
           console.log("Before navigation");
           await navigate("/bucketlist");
           console.log("After navigation");
@@ -78,7 +80,6 @@ import {
                 <i className="text-zinc-600">
                   {/* rizz cat dingus */}
                   {postItem?.title}
-                  {postItem?._id}
                 </i>
               </p>
               {/* description */}
@@ -107,6 +108,7 @@ import {
                 //     }}
                 // onClick={handleClick}
                 onClick={handleClick}
+                // onMouseOver={() => setColor(!color)}
                  >
                 
                 {icon}
