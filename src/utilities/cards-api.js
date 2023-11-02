@@ -18,6 +18,3 @@ export function updateCardAPI(bucketlistItemID, cardData) {
   return sendRequest(`${BASE_URL}/${bucketlistItemID}/edit`, "PUT", cardData);
 }
 
-export function createCardFromPostAPI(cardData) {
-    return sendRequest(`${BASE_URL}/cardFromPost/${postID}`, "POST", cardData);
-  }

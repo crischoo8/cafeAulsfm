@@ -114,7 +114,7 @@ function App() {
                 setPost={setPost}
                 />} />
 
-                <Route path="/announcements" element={<AdminPage adminPost={adminPost} setAdminPost={setAdminPost}/>} />
+                <Route path="/announcements" element={<AdminPage adminPost={adminPost} setAdminPost={setAdminPost} bucket={bucket} setBucket={setBucket}/>} />
                 {/*  create a /announcements/new route => do i rly need this??? */}
                 {/* for creating new admin posts ^^ */}
                 <Route path="/bucketlist" element={<BucketListPage bucket={bucket} setBucket={setBucket}/>} />

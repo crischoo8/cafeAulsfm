@@ -26,10 +26,7 @@ import {
     return result.data.card;
   }
   
-  export async function createCardFromPostService(cardData) {
-    const cardItem = await createCardFromPostAPI(cardData);
-    return cardItem.data.card;
-  }
+
   
   export function swalBasicSettings(title, icon) {
     const settings = {

@@ -90,25 +90,5 @@ async function updateOne(req, res) {
   }
 }
 
-    async function createCardFromPost(req, res) {
-        try {
-            const postID = req.params.postID;
-            const post = await Post.findById(postID);
-            if (!post) {
-                return res.status(404).json({ message: 'Post not found' });
-              }
-
-            const cardData = {
-                title: post.title,
-                description: post.description,
-                url: post.url,
-            }
-
-            const card = await Card.create(cardData);
-            res.status(201).json({ card });
-        } catch (err) {
-            console.log(err);
-            res.status(500).json({ error: 'An error occurred while creating the card' });
-        }
-    }
-module.exports = { create, getAll, del, updateOne, createCardFromPost };
+    
+module.exports = { create, getAll, del, updateOne };

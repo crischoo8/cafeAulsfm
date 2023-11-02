@@ -4,16 +4,64 @@ import {
     PiLinkSimpleBold,
     PiTrashDuotone,
   } from "react-icons/pi";
-  import { Link } from "react-router-dom";
+  import { Link, useNavigate } from "react-router-dom";
   import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
   import { useState } from "react";
+  import { createCardFromPostService, addCardService,swalBasicSettings } from "../../utilities/cards-service";
+  import Swal from "sweetalert2";
 
-  export default function AdminPostCard({postItem}) {
+  export default function AdminPostCard({postItem, bucket, setBucket}) {
     const [color, setColor] = useState(false);
     const icon = color ? <AiFillHeart/> : <AiOutlineHeart/>
-    const handleFillHeart = function() {
-
-    }
+    const [status, setStatus] = useState(null);
+    const navigate = useNavigate();
+      const handleClick = async () => {
+    
+        // need to spread the bucketData....if not payload wont work LOL
+        try {
+            const newCardData = {
+                title: postItem?.title,
+                description: postItem?.description,
+                url: postItem?.url,
+            };
+            console.log(newCardData)
+          const newBucket = await addCardService({
+            ...newCardData
+          });
+    
+          setBucket((prevBucket) => [...prevBucket, newBucket]);
+        //   console.log(bucket);
+          setColor(!color);
+          console.log("Before navigation");
+          await navigate("/bucketlist");
+          console.log("After navigation");
+          
+          Swal.fire(swalBasicSettings("Your Bucket is Updated!", "success"));
+          
+        } catch (err) {
+          if (err.message === "bucket is not iterable") {
+            Swal.fire({
+              ...swalBasicSettings("OK"),
+              text: "Bucket Created.",
+            });
+          } else if (err.message === "Unexpected end of JSON input") {
+            Swal.fire({
+              ...swalBasicSettings("Internal Server Error", "error"),
+              text: "Please try again later.",
+            });
+          } else {
+            Swal.fire({
+              ...swalBasicSettings("Error", "error"),
+              text: err.message,
+              confirmButtonText: "Try Again",
+            });
+          }
+          setStatus("error");
+        } finally {
+          setStatus("success");
+        }
+      };
+    
     return (
       
       <>
@@ -30,6 +78,7 @@ import {
                 <i className="text-zinc-600">
                   {/* rizz cat dingus */}
                   {postItem?.title}
+                  {postItem?._id}
                 </i>
               </p>
               {/* description */}
@@ -53,9 +102,13 @@ import {
               </p>
   
               <p className="flex justify-end text-indigo-600 text-3xl" 
-              onClick={() => {
-                setColor(!color);
-                }} >
+                //   onClick={() => {
+                //     setColor(!color);
+                //     }}
+                // onClick={handleClick}
+                onClick={handleClick}
+                 >
+                
                 {icon}
               </p>
             </div>

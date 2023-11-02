@@ -11,7 +11,7 @@ import { useState } from "react";
 
 const log = debug("cafeaulsfm:src:pages:AdminPage");
 
-export default function AdminPage({adminPost}) {
+export default function AdminPage({adminPost, bucket, setBucket}) {
     
       return (
         <>
@@ -28,6 +28,8 @@ export default function AdminPage({adminPost}) {
               key={postItem._id}
               index={index}
               postItem={postItem}
+              bucket={bucket}
+              setBucket={setBucket}
             />
           ))}
         </div>
