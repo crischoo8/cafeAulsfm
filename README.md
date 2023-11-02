@@ -1,4 +1,4 @@
-# Nextfit - Save Clothes, Save Money, Save Yourself
+# CafeAuLsfm (a fancafe without noisy people)
 
 ## Table of Contents
 
@@ -15,22 +15,21 @@
 
 ## Introduction
 
-CafeAuLsfm App provides a platform that allows users to be near to the source and far from the noise, making their stanning activities more peaceful. It provides invaluable assistance in making informed outfit choices, tracks the frequency of clothing item usage within your wardrobe, and prompts you to consider donating less-worn pieces. By doing so, it not only promotes sustainable practices but also empowers users to declutter their collection in a meaningful way.
-
+CafeAuLsfm App provides a platform that allows users to be near to the source and far from the noise, making their stanning activities more peaceful. Here, users can practice mindfulness in their stanning activities (stan - to be overzealous over a celebrity), and learn to appreciate their beloved artists with some sense of objectivity...not noise induced obsessiveness ^_^
 <img src="./public/assets/cafeaulsfm.jpeg">
 
 ## Features
 
 - **User-friendly interface:** The app features an intuitive and visually appealing user interface that allows users to navigate easily through the app.
-- **User Journal Page:** The core feature of the app is its ability to generate random outfits based on the weather. Simply upload your clothing items, and it will consider the current weather conditions to offer suitable outfit recommendations.
-- **Announcement Page (Admin Page):** Maintain a digital wardrobe by adding your own clothing items. You can upload pictures, categorize items, and save them for future outfit suggestions.
-- **Bucket List:** Save your favorite outfit combinations to use on another day.
+- **User Journal Page:** The core feature of the app is the platform it provides for users to journal and keep track of the various milestones in their fan journey. Here, users can express their thoughts and jot down their memories by creating a Journal Post. A picture, title, description and url for relevant (external) content are accepted to provide the necessary information in a concise manner.
+- **Announcement Page (Admin Page):** Admins can help to keep other users up-to-date with the artists by adding posts related to official content produced by the artists and events that they have/or are attending. (same features as the user Journal Posts)
+- **Bucket List:** Users can Add or Save things to-do into their Bucket List, so that they can conveniently keep track of their fan activities.
 
-<img src="https://raw.githubusercontent.com/cycedmund/nextfit-app/main/public/readme/nextfit-home.png">
+<img src="./public/assets/homepage.jpeg">
 
 ## Deployment
 
-CafeAuLsfm App is deployed on [Render](https://render.com/). You can access it [here](https://nextfit-app.onrender.com/).
+CafeAuLsfm App is deployed on [Render](https://render.com/). You can access it [here](https://cafeaulsfm-i6ia.onrender.com).
 
 ## Technologies Used
 
@@ -45,7 +44,7 @@ CafeAuLsfm App is deployed on [Render](https://render.com/). You can access it [
 
 ### Wireframes
 
-For our wireframe, we utilized ???? to design the prototype pages and components for our app. 
+For the wireframe, truthfully...there is none, but shout out to [NextFit](https://nextfit-app.onrender.com/) and Pinterest! ^_^  
 
 ### User Stories
 
@@ -58,39 +57,38 @@ You can access the Trello board [here](https://trello.com/b/JFeKxIJg/caf%C3%A9-a
 
 ### Pitch Deck
 
-Nextfit's advantage is that it's free!
-
-You can access our Pitch Deck [here](https://tome.app/nextfit/nextfit-cln7kjw2m05i3ny7aw77m3s1a).
+there is none :D
+but social media without the social? always a big slay.
 
 ### App Flow
 
 - **Login Page**
-- **Dashboard**
-  - Weather for today.
-  - **Navbar Options:**
-    1. Input Clothes
-    2. View Wardrobe
-    3. Outfit Suggestions
+- **Navbar Options:**
+1. Home Page
+2. My Journal 
+3. Cafe Updates
+4. My Bucket List
+5. Create Journal Post
+6. Create Bucket List Card
 
-#### Input Clothes
 
-- Form to create and store clothing information in the database (e.g. name, wardrobe, type).
+#### Create Journal Post/ Bucket List Card
 
-#### View Wardrobe
+- Form to create and store user information in the database (e.g. image, title, description, url).
 
-- Table to read, delete, and update clothing information from the database.
+#### My Journal/Cafe Updates/My Bucket List
 
-#### Outfit Suggestions
+- Here information from the database is read and displayed. For My Journal and My Bucket List information from the database, created by the current user, can be add to, deleted and updated.
 
-- Generate outfits based on weather
 
 ### Database Relationships
 
 - **One-to-Many (1-M):**
-  - One user (userID) can have multiple clothing items (itemID).
-  - One user (userID) can have multiple favourited outfits (outfitID)
+  - One user (userID) can have multiple journal posts (postID).
+  - One user (userID) can have multiple bucket list cards (bucketlistItemID).
+
 - **Many-to-Many (M-M):**
-  - Many items of clothing (itemID) can be associated with many outfits (outfitID).
+  - uh...@.@
 
 ## Project Brief
 
@@ -132,36 +130,34 @@ A README.md file with these sections (here's a basic template)
 
 ## Challenges
 
-Creating Nextfit App presented several challenges during development. Some of the key challenges included:
+Creating CafeAuLsfm presented several challenges. Some of the key challenges included:
 
-- **Algorithm Complexity:** Designing an algorithm that can generate aesthetically pleasing and well-coordinated outfits from a user's wardrobe items, considering various factors like weather, required intricate coding and optimization.
-
-- **Integration with Weather Data:** Incorporating real-time weather data to provide weather-appropriate outfit suggestions involved interfacing with external APIs and handling data synchronization challenges.
+- **Backend and User Authentication Set-Up:** Setting up backend is ruff...tldr: definitely remember to look through all files...at least once. (vite.config.js was a great start for me- shout out to that one line that reads like 
+ proxy: {
+      "/api": "http://localhost:3000",
+    },
+    )
 
 - **User Experience Design:** Ensuring a user-friendly and visually appealing interface that caters to a wide range of fashion preferences and age groups was a design challenge.
 
 ## Key Learnings
 
-During the development of Nextfit App, our team gained valuable insights and lessons:
+During the development of CafeAuLsfm, the insights and lessons derived are as such:
 
-- **API Integration:** Successfully integrating external APIs, like weather data, can add significant value to the app's functionality, but it comes with challenges related to data accuracy, availability, and handling potential issues gracefully.
-
-- **Algorithm Optimization:** Creating efficient algorithms for outfit generation requires careful consideration of various factors and a commitment to ongoing optimization.
+- **Debugging is a Necessary Fun (...evil):** to be honest, no part of this project was more rewarding than the debugging process- because it was at the points that i had to seek for answers by myself where my brain actually worked for once to piece together things. solid learning experience, 404/10 would recommend.
 
 ## Future Developments
 
-The Nextfit App is an evolving project with room for further enhancements and expansions. Some potential areas for future development include:
+CafeAuLsfm is cosy and comfortable but has capacityfor further enhancements and expansions. Some potential areas for future development include:
 
-- **Generate Outfits By Color And Style:** Optimize algorithms to generate outfits based on colors and styles.
+- **Interactive UI for the Edit (UPDATE) Function:** Editable UI would make for a more seamless user experience.
 
-- **Weather-Based Outfit Generation:** Enhance existing outfit generator algorithm to include future weather forecasts.
+- **Ability to drag and re-order journal cards in a board:** For user experience (again!...and maybe user is me- because I want that experience for real.)
 
-- **Personalized Styling Recommendations:** Implement machine learning models to provide personalized outfit suggestions based on users' fashion history, preferences, and body shape.
+- **Setting to make the user's board public or private:** Yes, most of the times I like the privacy to fawn over my idols, but I also like to brag (sometimes). iykyk i guess- sorry that was annoying. if you know! you know ~ ^_^ Also, for Social Sharing and Collaboration!
 
-- **Social Sharing and Collaboration:** Enhance the app to facilitate social sharing of outfits, outfit challenges, and collaborative wardrobe management among friends and family.
-
-- **Enhanced Wardrobe Analysis:** Improve wardrobe analytics to give users a deeper understanding of their clothing usage and potential areas for decluttering and sustainability.
+- **Reset Password Function:** no reason, just because. (actually i forgot the passwords to half the accounts i have created- but also i remember, i literally AM the admin~ muahahaha >:D)
 
 ## Acknowledgments
 
-- We would like to thank the open-source community for their contributions to the libraries and tools used in this project.
+- Shoutout to the open-source community for their contributions to the libraries and tools used in this project. (slayed, decimated, thank you for your service- greatly appreciated)
