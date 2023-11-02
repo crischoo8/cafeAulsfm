@@ -25,7 +25,6 @@ CafeAuLsfm App provides a platform that allows users to be near to the source an
 - **Announcement Page (Admin Page):** Admins can help to keep other users up-to-date with the artists by adding posts related to official content produced by the artists and events that they have/or are attending. (same features as the user Journal Posts)
 - **Bucket List:** Users can Add or Save things to-do into their Bucket List, so that they can conveniently keep track of their fan activities.
 
-<img src="./public/assets/homepage.jpeg">
 
 ## Deployment
 
