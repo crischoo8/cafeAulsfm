@@ -147,7 +147,7 @@ During the development of CafeAuLsfm, the insights and lessons derived are as su
 
 ## Future Developments
 
-CafeAuLsfm is cosy and comfortable but has capacityfor further enhancements and expansions. Some potential areas for future development include:
+CafeAuLsfm is cosy and comfortable but has capacity for further enhancements and expansions. Some potential areas for future development include:
 
 - **Interactive UI for the Edit (UPDATE) Function:** Editable UI would make for a more seamless user experience.
 
