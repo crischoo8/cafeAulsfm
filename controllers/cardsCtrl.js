@@ -49,7 +49,7 @@ async function del(req, res) {
       _id: req.params.bucketlistItemID,
       user: req.user._id,
     });
-    debug("delete post by user: %o", post);
+    debug("delete post by user: %o", card);
     sendResponse(res, 200);
   } catch (err) {
     sendResponse(res, 500, null, "Error deleting post");

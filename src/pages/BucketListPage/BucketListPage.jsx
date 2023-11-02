@@ -19,11 +19,10 @@ export default function BucketListPage({user, bucket, setBucket}) {
           try {
             await deleteCardService(bucketlistItemID);
             const remainingCard = bucket.filter((item) => item._id !== bucketlistItemID);
-            log("deleted card:", remainingCard);
             setBucket(remainingCard);
             Swal.fire(swalBasicSettings("Deleted!", "success"));
           } catch (err) {
-            console.error(err);
+            console.log(err)
             Swal.fire({
               ...swalBasicSettings("Error", "error"),
               text: "Unable to delete. Please try again!",
