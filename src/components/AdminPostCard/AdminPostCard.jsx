@@ -15,8 +15,9 @@ import {
     const icon = color ? <AiFillHeart/> : <AiOutlineHeart/>
     const [status, setStatus] = useState(null);
     const navigate = useNavigate();
-      const handleClick = async () => {
-    
+
+    const handleClick = async () => {
+       
         // need to spread the bucketData....if not payload wont work LOL
         try {
             const newCardData = {
@@ -31,12 +32,11 @@ import {
     
           setBucket((prevBucket) => [...prevBucket, newBucket]);
         //   console.log(bucket);
-          console.log('Before toggle: ', color);
+     
           await setColor(!color);
-          console.log('After toggle: ', color);
-          console.log("Before navigation");
+          
           await navigate("/bucketlist");
-          console.log("After navigation");
+    
           
           Swal.fire(swalBasicSettings("Your Bucket is Updated!", "success"));
           
@@ -106,9 +106,7 @@ import {
                 //   onClick={() => {
                 //     setColor(!color);
                 //     }}
-                // onClick={handleClick}
                 onClick={handleClick}
-                // onMouseOver={() => setColor(!color)}
                  >
                 
                 {icon}
