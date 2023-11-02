@@ -8,6 +8,6 @@ router.get("/", cardCtrl.getAll);
 router.post("/new", cardCtrl.create);
 router.delete("/:bucketlistItemID", cardCtrl.del);
 router.put("/:bucketlistItemID/edit", cardCtrl.updateOne);
-
+router.post("/cardFromPost/:postID", cardCtrl.createCardFromPost);
 
 module.exports = router;

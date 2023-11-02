@@ -3,6 +3,7 @@ import {
     getAllCardAPI,
     deleteCardAPI,
     updateCardAPI,
+    createCardFromPostAPI,
   } from "./cards-api";
 
   export async function addCardService(cardData) {
@@ -25,7 +26,10 @@ import {
     return result.data.card;
   }
   
-  
+  export async function createCardFromPostService(cardData) {
+    const cardItem = await createCardFromPostAPI(cardData);
+    return cardItem.data.card;
+  }
   
   export function swalBasicSettings(title, icon) {
     const settings = {
