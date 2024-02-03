@@ -137,7 +137,7 @@ Creating CafeAuLsfm presented several challenges. Some of the key challenges inc
     },
     )
 
-- **User Experience Design:** Ensuring a user-friendly and visually appealing interface that caters to a wide range of fashion preferences and age groups was a design challenge.
+- **User Experience Design:** Ensuring a user-friendly and visually appealing interface that caters to a wide range of preferences was a design challenge.
 
 ## Key Learnings
 
